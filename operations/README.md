@@ -11,6 +11,6 @@ The team operating the system — engineers on-call, new hires getting up to spe
 | Document | Purpose | Status |
 |---|---|---|
 | Knowledge Base | How an existing system or process works — the reference doc you read when you need to understand something that's already built | ✅ `kb_assembly-pipeline.md` |
-| Incident Report | What went wrong, why, and what we're doing about it — the post-mortem that turns a failure into institutional knowledge | — |
+| Incident Report | What went wrong, why, and what we're doing about it — the post-mortem that turns a failure into institutional knowledge | ✅ `pm_order-loss-incident.md`, `pm_jelly-overapplication-degradation.md` |
 | Runbook / Procedure | Step-by-step instructions for a repeatable task — the doc you follow when you need to do something correctly and can't afford to improvise | — |
 | Onboarding Guide | Everything a new team member needs to get productive — systems access, key docs, first-week expectations, and who to ask for what | — |
