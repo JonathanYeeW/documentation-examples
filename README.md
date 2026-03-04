@@ -25,6 +25,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `cpf` | Core product flow — the critical path through a system at any altitude |
 | `exp` | Exploration — engineering investigation into a problem space |
 | `kb` | Knowledge base — reference doc for how something already works |
+| `pm` | Postmortem — what went wrong, why, and what we're doing about it |
 
 ## Organization
 
