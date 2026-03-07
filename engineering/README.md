@@ -11,6 +11,7 @@ Engineers. These are written by engineers for engineers. A new engineer joining 
 | Document | Purpose | Status |
 |---|---|---|
 | Exploration | Engineering investigation into a problem space — what's happening, why, and what the options are, before committing to a solution | ✅ `exp_spread-selection-reset.md` |
+| Ticket | A scoped unit of work — what's broken or what needs to be built, why it matters, acceptance criteria, and enough implementation context to pick it up without a meeting | ✅ `tkt_spread-selector-state-fix.md`, `tkt_disable-spread-availability.md`, `tkt_order-service-registry-fallback.md` |
 | Technical Design Doc (TDD) | Detailed technical plan for a complex system change — problem framing, approach, alternatives considered, and implementation design | — |
 | Architecture Overview | How the system is structured at a high level — services, data flow, dependencies, and the key decisions that shaped the architecture | — |
 | Repo README | The entry point for a codebase — what it does, how to run it, how to contribute, and where to find things | — |

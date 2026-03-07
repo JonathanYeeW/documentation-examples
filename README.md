@@ -26,6 +26,8 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `exp` | Exploration — engineering investigation into a problem space |
 | `kb` | Knowledge base — reference doc for how something already works |
 | `pm` | Postmortem — what went wrong, why, and what we're doing about it |
+| `tkt` | Ticket — scoped unit of work with acceptance criteria and implementation context |
+| `prep` | Prep doc — LLM-synthesized briefing produced immediately before a recurring interaction |
 
 ## Organization
 
@@ -35,9 +37,10 @@ Examples are organized into five categories that mirror the layers of documentat
 |---|---|---|
 | **[strategic/](strategic/)** | Why we exist, where we're going | `pv_pbj-co.md` |
 | **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
-| **[engineering/](engineering/)** | How we build it | `exp_spread-selection-reset.md` |
+| **[engineering/](engineering/)** | How we build it | `exp_spread-selection-reset.md`, `tkt_spread-selector-state-fix.md` |
 | **[operations/](operations/)** | How we run it | `kb_assembly-pipeline.md` |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
+| **[llm/](llm/)** | Documents produced by an LLM as part of a defined workflow | `prep_account-checkin.md` |
 
 Each category has its own README describing the audience, purpose, and full list of document types — including the ones that haven't been written yet.
 
