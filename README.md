@@ -1,4 +1,8 @@
-# documentation-examples
+<p align="center">
+  <img src="assets/brand.png" alt="PB&J Machine Co." width="400" />
+</p>
+
+# PB&J Machine Company
 
 A collection of example documents for a fictional software company — all written about the same product, across every layer of company documentation.
 
@@ -7,6 +11,10 @@ A collection of example documents for a fictional software company — all writt
 Most documentation guides tell you *what* to write. They don't show you. This repo is the "show you" part.
 
 Every example is set in the same fictional company: a team building the software interface for a magic peanut butter and jelly sandwich machine. The subject matter is intentionally simple — you already know how a PB&J works. That way the focus stays on the writing, not the domain.
+
+<p align="center">
+  <img src="assets/pbj+machine.png" alt="The PB&J Machine" width="600" />
+</p>
 
 Each document demonstrates a different document type you'd find in a real software company: product visions, feature specs, technical explorations, and more. Same company, same product, different purposes and audiences.
 

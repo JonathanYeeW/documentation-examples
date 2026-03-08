@@ -1,4 +1,4 @@
-# Order Service Graceful Degradation on Spread Registry Unavailability
+# feat: order service graceful degradation on spread registry unavailability
 
 **Ticket:** ENG-315
 **Type:** Reliability
