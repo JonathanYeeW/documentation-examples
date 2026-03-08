@@ -1,4 +1,4 @@
-# Fix SpreadSelector to Persist Selection Across Navigation
+# bug: fix spread selector to persist selection across navigation
 
 **Ticket:** ENG-313
 **Type:** Bug

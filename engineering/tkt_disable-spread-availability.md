@@ -1,4 +1,4 @@
-# Temporarily Disable a Spread from the Ordering UI
+# feat: temporarily disable a spread from the ordering ui
 
 **Ticket:** ENG-314
 **Type:** Feature

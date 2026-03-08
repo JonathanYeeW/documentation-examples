@@ -1,4 +1,8 @@
-# documentation-examples
+<p align="center">
+  <img src="assets/brand.png" alt="PB&J Machine Co." width="400" />
+</p>
+
+# PB&J Machine Company
 
 A collection of example documents for a fictional software company — all written about the same product, across every layer of company documentation.
 
@@ -7,6 +11,10 @@ A collection of example documents for a fictional software company — all writt
 Most documentation guides tell you *what* to write. They don't show you. This repo is the "show you" part.
 
 Every example is set in the same fictional company: a team building the software interface for a magic peanut butter and jelly sandwich machine. The subject matter is intentionally simple — you already know how a PB&J works. That way the focus stays on the writing, not the domain.
+
+<p align="center">
+  <img src="assets/pbj+machine.png" alt="The PB&J Machine" width="600" />
+</p>
 
 Each document demonstrates a different document type you'd find in a real software company: product visions, feature specs, technical explorations, and more. Same company, same product, different purposes and audiences.
 
@@ -28,6 +36,8 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `pm` | Postmortem — what went wrong, why, and what we're doing about it |
 | `tkt` | Ticket — scoped unit of work with acceptance criteria and implementation context |
 | `prep` | Prep doc — LLM-synthesized briefing produced immediately before a recurring interaction |
+| `rdm` | Repo README — entry point for a codebase; what it does, how to run it, how to contribute |
+| `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors |
 
 ## Organization
 
@@ -37,7 +47,7 @@ Examples are organized into five categories that mirror the layers of documentat
 |---|---|---|
 | **[strategic/](strategic/)** | Why we exist, where we're going | `pv_pbj-co.md` |
 | **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
-| **[engineering/](engineering/)** | How we build it | `exp_spread-selection-reset.md`, `tkt_spread-selector-state-fix.md` |
+| **[engineering/](engineering/)** | How we build it | `exp_spread-selection-reset.md`, `tkt_spread-selector-state-fix.md`, `rdm_cli-pbj.md`, `rdm_api-pbj.md`, `rdm_mcp-pbj.md`, `rdm_web-pbj.md`, `rdm_mobile-pbj.md`, `ctb_cli-pbj.md` |
 | **[operations/](operations/)** | How we run it | `kb_assembly-pipeline.md` |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
 | **[llm/](llm/)** | Documents produced by an LLM as part of a defined workflow | `prep_account-checkin.md` |
