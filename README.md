@@ -38,6 +38,8 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `prep` | Prep doc — LLM-synthesized briefing produced immediately before a recurring interaction |
 | `rdm` | Repo README — entry point for a codebase; what it does, how to run it, how to contribute |
 | `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors |
+| `prd` | PR description — what changed, why, how to review it, and how to test it |
+| `rln` | GitHub release notes — what shipped, why it matters, and how to upgrade |
 
 ## Organization
 
@@ -47,7 +49,7 @@ Examples are organized into five categories that mirror the layers of documentat
 |---|---|---|
 | **[strategic/](strategic/)** | Why we exist, where we're going | `pv_pbj-co.md` |
 | **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
-| **[engineering/](engineering/)** | How we build it | `exp_spread-selection-reset.md`, `tkt_spread-selector-state-fix.md`, `rdm_cli-pbj.md`, `rdm_api-pbj.md`, `rdm_mcp-pbj.md`, `rdm_web-pbj.md`, `rdm_mobile-pbj.md`, `ctb_cli-pbj.md` |
+| **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `repos/`, `tickets/`, `shipping/`, `explorations/` |
 | **[operations/](operations/)** | How we run it | `kb_assembly-pipeline.md` |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
 | **[llm/](llm/)** | Documents produced by an LLM as part of a defined workflow | `prep_account-checkin.md` |
