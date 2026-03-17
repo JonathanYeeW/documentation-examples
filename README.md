@@ -35,24 +35,27 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `kb` | Knowledge base — reference doc for how something already works |
 | `pm` | Postmortem — what went wrong, why, and what we're doing about it |
 | `tkt` | Ticket — scoped unit of work with acceptance criteria and implementation context |
-| `prep` | Prep doc — LLM-synthesized briefing produced immediately before a recurring interaction |
-| `rdm` | Repo README — entry point for a codebase; what it does, how to run it, how to contribute |
+| `sop` | Standard operating procedure — step-by-step procedure for an LLM to follow |
+| `rdm-repo` | Repo README — entry point for a codebase; what it does, how to run it, how to contribute |
+| `rdm-project` | Project README — LLM orientation doc for an MDP project; what it is, where things live, current state |
 | `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors |
 | `prd` | PR description — what changed, why, how to review it, and how to test it |
 | `rln` | GitHub release notes — what shipped, why it matters, and how to upgrade |
 
 ## Organization
 
-Examples are organized into five categories that mirror the layers of documentation in a software company — from highest altitude to most operational.
+Examples are organized into categories that mirror the layers of documentation in a software company — from highest altitude to most operational. READMEs are their own category because they serve two distinct audiences: developers navigating a codebase, and LLMs orienting to a session.
 
 | Category | What It Covers | Examples |
 |---|---|---|
 | **[strategic/](strategic/)** | Why we exist, where we're going | `pv_pbj-co.md` |
 | **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
-| **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `repos/`, `tickets/`, `shipping/`, `explorations/` |
-| **[operations/](operations/)** | How we run it | `kb_assembly-pipeline.md` |
+| **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `shipping/`, `explorations/` |
+| **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
-| **[llm/](llm/)** | Documents produced by an LLM as part of a defined workflow | `prep_account-checkin.md` |
+| **[llm/](llm/)** | SOPs — procedures an LLM follows as part of a defined workflow | `sop_account-checkin.md` |
+| **[readmes/](readmes/)** | README examples organized by audience — repos (for developers) and projects (for LLMs) | See `readmes/` |
+| **[developer/](developer/)** | Setup guides and how-to docs for working in a codebase | `kb_vscode-shell-command.md` |
 
 Each category has its own README describing the audience, purpose, and full list of document types — including the ones that haven't been written yet.
 
