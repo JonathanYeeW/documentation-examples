@@ -41,6 +41,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors |
 | `prd` | PR description — what changed, why, how to review it, and how to test it |
 | `rln` | GitHub release notes — what shipped, why it matters, and how to upgrade |
+| `plan` | Implementation plan — agreed execution plan captured mid-work, after architectural decisions are locked but before all phases are complete. Covers what's being built, the phased approach, current status, and open questions. |
 
 ## Organization
 
