@@ -18,6 +18,6 @@ Postmortems live flat in `operations/` — they are event-based, not reference m
 
 | Document | Purpose | Subcategory | Status |
 |---|---|---|---|
-| Knowledge Base | How an existing system or process works — the reference doc you read when you need to understand something that's already built | `knowledge-base/` | ✅ `kb_assembly-pipeline.md`, `kb_spread-selection-system.md` |
+| Knowledge Base | How an existing system or process works — the reference doc you read when you need to understand something that's already built | `knowledge-base/` | ✅ See `knowledge-base/` |
 | Postmortem | What went wrong, why, and what we're doing about it — the post-mortem that turns a failure into institutional knowledge | flat in `operations/` | ✅ `pm_order-loss-incident.md`, `pm_jelly-overapplication-degradation.md`, `pm_peanut-butter-supplier-outage.md` |
 | Runbook | Step-by-step instructions for a repeatable task — the doc you follow when you need to do something correctly and can't afford to improvise | flat in `operations/` | — |
