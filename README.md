@@ -32,7 +32,8 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `fsp` | Feature spec — implementation-ready plan for a specific feature |
 | `cpf` | Core product flow — the critical path through a system at any altitude |
 | `exp` | Exploration — engineering investigation into a problem space |
-| `kb` | Knowledge base — reference doc for how something already works |
+| `kb-op` | Knowledge base (operational) — step-by-step reference for how a specific system or mechanism works, with code references |
+| `kb-con` | Knowledge base (conceptual) — mental model for how something works as a whole; no steps or filenames |
 | `pm` | Postmortem — what went wrong, why, and what we're doing about it |
 | `tkt` | Ticket — scoped unit of work with acceptance criteria and implementation context |
 | `sop` | Standard operating procedure — step-by-step procedure for an LLM to follow |
