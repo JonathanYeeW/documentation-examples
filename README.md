@@ -29,6 +29,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | Prefix | What It Is |
 |---|---|
 | `pv` | Product vision — why the company exists and where it's going |
+| `qp` | Quarter plan — goal, requirements, stretch goals, and phased work order for a single quarter |
 | `fsp` | Feature spec — implementation-ready plan for a specific feature |
 | `cpf` | Core product flow — the critical path through a system at any altitude |
 | `exp` | Exploration — engineering investigation into a problem space |

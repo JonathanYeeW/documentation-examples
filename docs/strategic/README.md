@@ -12,4 +12,4 @@ Everyone. Leadership writes these, but the whole company reads them. They should
 |---|---|---|
 | Product Vision | Why the company exists, what future we're building toward, and the strategic bets to get there | ✅ `pv_pbj-co.md` |
 | Company Values / Operating Principles | How we work together — the behavioral expectations and cultural commitments that shape daily decisions | — |
-| OKRs / Goals | What we're trying to achieve this quarter or year, measured concretely | — |
+| Quarter Plan | The goal, requirements, stretch goals, and phased work order for a single quarter | ✅ `qp_pbj-co.md` |

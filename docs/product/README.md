@@ -1,3 +1,4 @@
+
 # Product
 
 Documents that describe what we're building and why — the bridge between strategic direction and engineering execution. These translate company vision into concrete product decisions. They answer "what should the user experience be?" before anyone writes a line of code.
