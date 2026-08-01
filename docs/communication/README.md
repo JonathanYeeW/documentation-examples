@@ -8,8 +8,9 @@ Varies by document. Status updates go to leadership and stakeholders. Retrospect
 
 ## Document Types
 
-| Document | Purpose | Status |
-|---|---|---|
-| Project Kickoff | The opening document for a new initiative — what we're doing, why now, who's involved, and what success looks like. Aligns the team before work begins | — |
-| Status Update / Weekly Summary | What happened this week, what's blocked, and what's coming next — the recurring pulse check that keeps stakeholders informed without requiring meetings | — |
-| Retrospective | What went well, what didn't, and what we're changing — the structured reflection after a project or incident that turns experience into improvement | — |
+| Document | Prefix | Purpose | Status |
+|---|---|---|---|
+| Meeting Notes | `mtg` | A record of a collaborative meeting — the narrative of the conversation, decisions made, open questions, and action items. Written to be accessible to anyone in the company and retrievable by a future LLM with no other context. | `mtg_spread-integration-architecture.md` |
+| Project Kickoff | — | The opening document for a new initiative — what we're doing, why now, who's involved, and what success looks like. Aligns the team before work begins. | — |
+| Status Update / Weekly Summary | — | What happened this week, what's blocked, and what's coming next — the recurring pulse check that keeps stakeholders informed without requiring meetings. | — |
+| Retrospective | — | What went well, what didn't, and what we're changing — the structured reflection after a project or incident that turns experience into improvement. | — |

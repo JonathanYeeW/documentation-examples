@@ -44,6 +44,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `prd` | PR description — what changed, why, how to review it, and how to test it |
 | `rln` | GitHub release notes — what shipped, why it matters, and how to upgrade |
 | `plan` | Implementation plan — agreed execution plan captured mid-work, after architectural decisions are locked but before all phases are complete. Covers what's being built, the phased approach, current status, and open questions. |
+| `sa` | Self-assessment — quarterly or annual reflection on what happened, how the individual showed up, what they learned, and where they are heading. Written as a narrative rather than a list of accomplishments. |
 
 ## Organization
 
@@ -56,6 +57,7 @@ Examples are organized into categories that mirror the layers of documentation i
 | **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `shipping/`, `explorations/` |
 | **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
+| **[people/](people/)** | Personal reflection and performance artifacts | `sa_pbj-co.md` |
 | **[llm/](llm/)** | SOPs — procedures an LLM follows as part of a defined workflow | `sop_account-checkin.md` |
 | **[readmes/](readmes/)** | README examples organized by audience — repos (for developers) and projects (for LLMs) | See `readmes/` |
 | **[developer/](developer/)** | Setup guides and how-to docs for working in a codebase | `kb_vscode-shell-command.md` |
