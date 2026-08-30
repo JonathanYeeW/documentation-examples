@@ -30,7 +30,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 |---|---|
 | `pv` | Product vision — why the company exists and where it's going |
 | `qp` | Quarter plan — goal, requirements, stretch goals, and phased work order for a single quarter |
-| `fsp` | Feature spec — implementation-ready plan for a specific feature |
+| `fsp` | Feature spec — the shape of one piece of work: function signatures, inputs and outputs, error handling, and edge cases. Zooms into how a single step gets built. Reach for one when the shape needs settling before code exists |
 | `cpf` | Core product flow — the critical path through a system at any altitude |
 | `exp` | Exploration — engineering investigation into a problem space |
 | `kb-op` | Knowledge base (operational) — step-by-step reference for how a specific system or mechanism works, with code references |
@@ -43,7 +43,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors |
 | `prd` | PR description — what changed, why, how to review it, and how to test it |
 | `rln` | GitHub release notes — what shipped, why it matters, and how to upgrade |
-| `plan` | Implementation plan — agreed execution plan captured mid-work, after architectural decisions are locked but before all phases are complete. Covers what's being built, the phased approach, current status, and open questions. |
+| `plan` | Implementation plan — the sequence and scope of a body of work: what's being built, in what order, what's in and out, and where it currently stands. Answers *what happens and in what order*, not *how each piece is shaped*. The default document for any multi-step work |
 | `sa` | Self-assessment — quarterly or annual reflection on what happened, how the individual showed up, what they learned, and where they are heading. Written as a narrative rather than a list of accomplishments. |
 
 ## Organization
