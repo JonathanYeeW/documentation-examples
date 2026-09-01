@@ -38,6 +38,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `pm` | Postmortem — what went wrong, why, and what we're doing about it |
 | `tkt` | Ticket — scoped unit of work with acceptance criteria and implementation context |
 | `sop` | Standard operating procedure — step-by-step procedure for an LLM to follow |
+| `plg` | Plugin — an extension loaded at a fixed point in a session, either a standing constraint held for the whole session or a conditional procedure run when its trigger is met |
 | `rdm-repo` | Repo README — entry point for a codebase; what it does, how to run it, how to contribute |
 | `rdm-project` | Project README — LLM orientation doc for an MDP project; what it is, where things live, current state |
 | `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors |
@@ -58,7 +59,7 @@ Examples are organized into categories that mirror the layers of documentation i
 | **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
 | **[people/](people/)** | Personal reflection and performance artifacts | `sa_pbj-co.md` |
-| **[llm/](llm/)** | SOPs — procedures an LLM follows as part of a defined workflow | `sop_account-checkin.md` |
+| **[llm/](llm/)** | SOPs and plugins — documents that tell an LLM how to act within a defined workflow | `sop_account-checkin.md`, `plg_machine-targeting.md`, `plg_shift-handoff.md` |
 | **[readmes/](readmes/)** | README examples organized by audience — repos (for developers) and projects (for LLMs) | See `readmes/` |
 | **[developer/](developer/)** | Setup guides and how-to docs for working in a codebase | `kb_vscode-shell-command.md` |
 
