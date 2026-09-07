@@ -1,12 +1,16 @@
 # READMEs
 
-Examples of README documents — the entry points and orientation docs that live inside codebases and project systems. Organized by the audience they're written for.
+Examples of README documents — the entry points and orientation docs that live at the front of a codebase, a project, or a documentation directory. Organized by the type of thing being fronted, because that is what decides the audience and the shape.
 
 ## Organization
 
 | Subcategory | What It Covers |
 |---|---|
-| **[repos/](repos/)** | READMEs and contributing guides for code repositories — written for developers |
-| **[projects/](projects/)** | Project orientation docs for LLM sessions — written for models |
+| **[repos/](repos/)** | Repo READMEs (`rdm-repo`) — the entry point for a codebase, written for a developer arriving cold |
+| **[contributing/](contributing/)** | Contributing docs (`ctb`) — architecture, layout, and testing expectations, written for a developer about to make a change |
+| **[projects/](projects/)** | Project READMEs (`rdm-project`) — orientation for an LLM session picking up a body of work |
+| **[wikis/](wikis/)** | Wiki READMEs (`rdm-wiki`) — the front door of a documentation directory, routing to its children and holding what none of them owns |
 
-These are two different document types that happen to share a name. Repo READMEs orient a human developer to a codebase. Project READMEs orient an LLM to a session context. Different audiences, different structures, different purposes.
+Four document types that share a location and little else. A repo README's reader wants to run something; a contributing doc's reader has already decided to change it; a project README's reader has no memory of the work at all; a wiki README's reader wants a rule before writing anything. Different audiences, different structures.
+
+`repos/` and `contributing/` are the two front doors of the same repository, which is why they sit beside each other rather than in separate categories.

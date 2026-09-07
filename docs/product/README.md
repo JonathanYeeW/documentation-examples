@@ -1,4 +1,3 @@
-
 # Product
 
 Documents that describe what we're building and why — the bridge between strategic direction and engineering execution. These translate company vision into concrete product decisions. They answer "what should the user experience be?" before anyone writes a line of code.
@@ -9,9 +8,11 @@ Product, design, and engineering. These are the shared language between the peop
 
 ## Document Types
 
-| Document | Purpose | Status |
-|---|---|---|
-| Feature Spec | Implementation-ready plan for a specific feature, layered from product altitude down to pseudocode | ✅ `fsp_artisan-spread-selection.md` |
-| Core Product Flow | The critical path through a system — every step from a defined start state to end state. Altitude isn't prescribed; it's determined by where the start and end points live. A product-level flow covers the full user journey. A pipeline-level flow covers the internals of a single operation. Same structure, different zoom. | ✅ `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
-| Product Roadmap | What we're building over the next quarter or year, organized by priority and sequence | — |
-| User Research Findings | What we learned from talking to users — patterns, pain points, and opportunities that inform product decisions | — |
+| Type | Purpose |
+|---|---|
+| **[feature-specs/](feature-specs/)** | Feature specs (`fsp`) — an implementation-ready plan for one feature, layered from product altitude down to pseudocode |
+| **[core-product-flows/](core-product-flows/)** | Core product flows (`cpf`) — the critical path through a system, from a defined start state to a defined end state |
+| `roadmaps/` *(planned)* | Product roadmaps (`rmp`) — what we're building over the next quarter or year, by priority and sequence |
+| `research/` *(planned)* | User research findings (`urf`) — patterns, pain points, and opportunities from talking to users |
+
+A spec describes something being built; a flow describes something that already works. That is the line between the first two, and the one most often crossed.
