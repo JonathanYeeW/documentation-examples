@@ -74,6 +74,10 @@ Four sections, in this order:
 
 **Conventions are rules, not description.** A convention a reader could have inferred from the example does not need stating; one they would get wrong without being told does.
 
+**A type README is not a wiki README**, despite both sitting at the front of a directory. A wiki README fronts a directory of standards it does not own, so it routes and holds nothing — [`docs/readmes/wikis/README.md`](docs/readmes/wikis/README.md) is explicit that a rule lives in the child that proves it. A type README owns the standard for its type; its children are examples, and an example cannot state a rule. That inverts the constraint: here the rules go in the README, because there is nowhere below it for them to live.
+
+**The category README is the wiki README of this collection.** `docs/<category>/README.md` routes to its type directories and describes what each covers. It does not carry the conventions of any type.
+
 ## Adding a New Type
 
 Five steps, in order. The order matters — the example is what the other four describe.

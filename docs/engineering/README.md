@@ -8,11 +8,12 @@ Engineers. A new engineer joining the team should be able to read the engineerin
 
 ## Organization
 
-Engineering examples are organized into four subcategories:
+Engineering examples are organized into five subcategories:
 
 | Subcategory | What It Covers |
 |---|---|
 | **[tickets/](tickets/)** | Scoped units of work — what needs to be built or fixed, and why |
+| **[plans/](plans/)** | The sequence and scope of a multi-phase body of work, and where it currently stands |
 | **[shipping/](shipping/)** | Output artifacts of shipping a feature — PR descriptions and release notes |
 | **[explorations/](explorations/)** | Technical investigations before committing to a solution |
 | **[notebooks/](notebooks/)** | Records of hands-on operations — what was run, what came back, and what it settled |
@@ -29,4 +30,4 @@ READMEs and contributing guides that live inside codebases are in [`readmes/repo
 | Exploration | Engineering investigation into a problem space — what's happening, why, and what the options are, before committing to a solution. | `explorations/` | ✅ `exp_spread-selection-reset.md` |
 | Technical Design Doc (TDD) | Detailed technical plan for a complex system change — problem framing, approach, alternatives considered, and implementation design. | `explorations/` | — |
 | Notebook | The record of one hands-on operation — provisioning, a migration, a live configuration change — written entry by entry as it happens. Typed entries (action, observation, decision, file), verbatim output, failures retained, and a resource register of what exists now. Covers one operation with a clear start and end, not one ticket and not one phase. | `notebooks/` | ✅ `nb_order-service-provisioning.md`, `nb_spread-registry-backfill.md` |
-| Implementation Plan | The sequence and scope of a body of work — what's being built, in what order, what's in and out, and where it currently stands. Answers *what happens and in what order*, not *how each piece is shaped*. | `engineering/` (flat) | ✔️ `plan_spread-nutritional-backfill.md`, `plan_spread-registry-database-migration.md` |
+| Implementation Plan | The sequence and scope of a body of work — what's being built, in what order, what's in and out, and where it currently stands. Answers *what happens and in what order*, not *how each piece is shaped*. | `plans/` | ✅ `plan_spread-nutritional-backfill.md`, `plan_spread-registry-database-migration.md` |

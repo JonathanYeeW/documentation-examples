@@ -59,7 +59,7 @@ READMEs are their own category because they are front-door documents rather than
 |---|---|---|
 | **[strategic/](strategic/)** | Why we exist, where we're going | `pv_pbj-co.md` |
 | **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
-| **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `shipping/`, `explorations/`, `notebooks/` |
+| **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `plans/`, `shipping/`, `explorations/`, `notebooks/` |
 | **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
 | **[people/](people/)** | Personal reflection and performance artifacts | `sa_pbj-co.md` |
