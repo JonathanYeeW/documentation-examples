@@ -63,7 +63,7 @@ READMEs are their own category because they are front-door documents rather than
 | **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
 | **[communication/](communication/)** | Status, alignment, reflection | — |
 | **[people/](people/)** | Personal reflection and performance artifacts | `sa_pbj-co.md` |
-| **[llm/](llm/)** | SOPs and plugins — documents that tell an LLM how to act within a defined workflow | `sop_account-checkin.md`, `plg_machine-targeting.md`, `plg_shift-handoff.md` |
+| **[llm/](llm/)** | SOPs and plugins — documents that tell an LLM how to act within a defined workflow | See `llm/` — organized into `sops/`, `plugins/` |
 | **[readmes/](readmes/)** | Front-door documents, organized by what they front — `repos/`, `contributing/`, `projects/`, `wikis/` | See `readmes/` |
 | **[developer/](developer/)** | Setup guides and how-to docs for working in a codebase | `kb_vscode-shell-command.md` |
 
