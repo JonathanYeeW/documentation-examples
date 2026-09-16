@@ -51,46 +51,94 @@ PHASE 4: QUALITY & RETURN
 
 ## Phase 1: Spread Resolution
 
-Registry-driven. The function resolves the user's spread selection into a concrete configuration before touching any ingredients. Failures here are cheap — nothing has been opened, nothing is wasted.
+Registry-driven. The function resolves the user's spread selection into a concrete configuration before touching any ingredients, so failures here are cheap — nothing has been opened and nothing is wasted.
 
-**Step 1: Look up spread config.** The function calls `getSpreadConfig(spreadType)` with the spread key from the user's order (e.g., "almond_butter"). The registry returns the full `SpreadConfig` — label, viscosity, and the boolean flags that drive pre-handling (stir, refrigerate). This is the only integration point between the pipeline and the registry. Everything downstream reads from the resolved config, not the raw spread key.
+**Step 1: Look up spread config.** The only integration point between the pipeline and the registry.
 
-**Step 2: Validate spread.** If the spread key isn't in the registry, `getSpreadConfig` throws `UnknownSpreadError` with the list of valid spread types included in the error. This is a developer error — the UI should only offer spreads that exist in the registry. The order fails immediately and no ingredients are pulled.
+- `getSpreadConfig(spreadType)` is called with the spread key from the order, such as `almond_butter`.
+- It returns the full `SpreadConfig` — label, viscosity, and the boolean flags that drive pre-handling.
+- Everything downstream reads the resolved config, never the raw spread key.
+
+**Step 2: Validate spread.** The guard against a key the registry does not hold.
+
+- An unknown key throws `UnknownSpreadError`, with the list of valid spread types in the error.
+- The order fails immediately and no ingredients are pulled.
+- **This is a developer error** — the UI should only offer spreads that exist in the registry.
 
 ---
 
 ## Phase 2: Pre-Handling
 
-Conditional. The spread config's boolean flags determine which pre-handling steps run. Standard peanut butter skips this phase entirely — no stir, no temper. Natural almond butter runs both. Each pre-handling step prepares the spread in-place before assembly begins. Failures here stop the order before any bread or jelly is consumed.
+Conditional. The spread config's boolean flags decide which steps run — standard peanut butter skips the phase entirely, natural almond butter runs both. Failures here stop the order before any bread or jelly is consumed.
 
-**Step 3: Stir (if required).** For natural spreads that separate over time, the pipeline opens the container and stirs in 30-second cycles. After each cycle, consistency is checked — if the oil is still separated, another cycle runs. Maximum three cycles. If the spread won't mix after three rounds, the container is likely too old or too cold, and the order fails with `SpreadNotMixedError`. The error suggests a replacement container so operations can act on it.
+**Step 3: Stir, if required.** For natural spreads that separate over time.
 
-**Step 4: Temper (if required).** For refrigerated spreads, the pipeline removes the container from cold storage and lets it rest at room temperature. Temperature is checked every 60 seconds. Once within 5°F of the target (65°F), the spread is ready. Exact temperature doesn't matter — close enough means soft enough to apply without tearing bread. If tempering times out after 10 minutes, the pipeline proceeds with a warning flag rather than failing the order. A slightly cold spread may affect consistency but won't break anything. The warning is logged so operations can track if specific spreads consistently fail to temper in time.
+- The container is opened and stirred in 30-second cycles, with consistency checked after each.
+- Separated oil triggers another cycle, to a maximum of three.
+- A spread that will not mix after three rounds fails the order with `SpreadNotMixedError`, which names a replacement container so operations can act on it.
+
+**Step 4: Temper, if required.** For refrigerated spreads.
+
+- The container is removed from cold storage and rests at room temperature, with the temperature checked every 60 seconds.
+- Within 5°F of the 65°F target counts as ready. Exact temperature does not matter — close enough means soft enough to apply without tearing bread.
+- A timeout after 10 minutes proceeds with a warning flag rather than failing the order, because a slightly cold spread may affect consistency but will not break anything.
+- The warning is logged so operations can track spreads that consistently fail to temper in time.
 
 ---
 
 ## Phase 3: Assembly
 
-Fixed sequence. Every order runs through the same steps in the same order. The spread config influences spreader pressure (step 6), but the sequence itself doesn't change. Quality gates fire at the earliest possible point — a failure at step 5 wastes bread but saves spread and jelly, a failure at step 8 wastes everything.
+Fixed sequence. Every order runs the same steps in the same order; the spread config influences spreader pressure at step 6 but never the sequence itself. Quality gates fire at the earliest possible point, because a failure at step 5 wastes bread while a failure at step 8 wastes everything.
 
-**Step 5: Prepare bread.** Bread is sliced if needed and toasted if the user requested it. Toasted bread gets a mandatory 30-second cool-down before spread application. Without the cool-down, spread melts into the bread grain and the sandwich falls apart on first bite. This was discovered in production (INC-042) and is non-negotiable — the pipeline blocks until cool-down completes regardless of order throughput pressure.
+**Step 5: Prepare bread.** Slice, toast, cool.
 
-**Step 6: Apply spread.** Spread goes on Slice A. The spreader tool adjusts pressure based on the `viscosity` field from the spread config — thick spreads need more force, thin spreads need a lighter touch. If the bread is still warm from toasting, the pipeline reduces spread quantity by 15% to prevent sogginess from accelerated melting. If the spread is too viscous to apply (can happen with under-tempered refrigerated spreads), the pipeline warms the spread for 10 seconds and retries once. A second failure throws `SpreadApplicationError` and the order fails. No partial sandwich is served.
+- Bread is sliced if needed and toasted if the user requested it.
+- Toasted bread gets a mandatory 30-second cool-down before spread application.
+- **INC-042** — without the cool-down, spread melts into the bread grain and the sandwich falls apart on first bite. The pipeline blocks until it completes regardless of throughput pressure.
 
-**Step 7: Apply jelly.** Jelly goes on Slice B. Straightforward application — jelly doesn't have the viscosity variance or temperature sensitivity that spreads do. No conditional logic, no pre-handling.
+**Step 6: Apply spread.** Spread goes on Slice A, at a pressure the config decides.
 
-**Step 8: Coverage validation.** Both slices are scanned for bare spots larger than 1cm². This catches uneven spread application, jelly pooling in one corner, or spots where the bread texture prevented adhesion. A failed check triggers one touch-up pass on the offending slice. If coverage still isn't clean after the touch-up, the order fails. This is the last quality gate before the sandwich becomes irreversible — once the slices are combined, there's no fixing a coverage problem.
+- The spreader adjusts pressure from the `viscosity` field — thick spreads need more force, thin spreads a lighter touch.
+- Bread still warm from toasting reduces spread quantity by 15%, to prevent sogginess from accelerated melting.
+- A spread too viscous to apply is warmed for 10 seconds and retried once. A second failure throws `SpreadApplicationError`.
+- No partial sandwich is ever served.
 
-**Step 9: Combine, cut, plate.** Slice A and Slice B are pressed together, cut diagonally (default), and placed on a plate. This step is mechanical and has no conditional logic or quality gates — if we got here, the sandwich is good.
+**Step 7: Apply jelly.** Jelly goes on Slice B, with no conditional logic and no pre-handling — it has none of the viscosity variance or temperature sensitivity that spreads do.
+
+**Step 8: Coverage validation.** The last quality gate before the sandwich becomes irreversible.
+
+- Both slices are scanned for bare spots larger than 1cm², catching uneven spread, pooled jelly, and spots where bread texture prevented adhesion.
+- A failed check triggers one touch-up pass on the offending slice.
+- Coverage still unclean after the touch-up fails the order.
+- Once the slices are combined there is no fixing a coverage problem, which is why this gate sits here.
+
+**Step 9: Combine, cut, plate.** Slices are pressed together, cut diagonally by default, and placed on a plate. No conditional logic and no quality gates — if the pipeline got here, the sandwich is good.
 
 ---
 
 ## Phase 4: Quality & Return
 
-The final check and handoff back to the caller.
+The final check and the handoff back to the caller.
 
-**Step 10: Quality photo.** A photo of the plated sandwich is taken for the order record. This serves the operations dashboard, not the user — it's evidence that the sandwich met quality standards at the moment of completion. The photo is stored with the order metadata.
+**Step 10: Quality photo.** A photo of the plated sandwich is taken for the order record.
 
-**Step 11: Return.** The function returns the plated sandwich. Same output shape regardless of which spread was selected or which pre-handling steps ran — callers don't need to know what happened inside the pipeline. If any step in Phases 2–3 threw, the error propagates to the caller with enough context to notify the user and suggest a retry or different selection.
+- It serves the operations dashboard, not the user — evidence that the sandwich met quality standards at the moment of completion.
+- Stored with the order metadata.
 
-**Error handling.** Failures fall into two categories based on when they happen. Pre-assembly failures (Phase 1–2) are cheap — no ingredients consumed, the user is asked to select a different spread or try again. Assembly failures (Phase 3) are expensive — bread and potentially spread are wasted, but the alternative is serving a bad sandwich. The pipeline never serves a partial or substandard sandwich. Every failure mode prefers wasting ingredients over delivering a bad experience.
+**Step 11: Return.** The function returns the plated sandwich.
+
+- The output shape is the same regardless of which spread was selected or which pre-handling ran. Callers do not need to know what happened inside.
+- An error thrown anywhere in Phases 2–3 propagates with enough context to notify the user and suggest a retry or a different selection.
+
+---
+
+## Error Handling
+
+Failures fall into two classes, and the class is decided by when the failure happens rather than by what went wrong.
+
+| Class | Phases | What it costs | What the user is told |
+|---|---|---|---|
+| Pre-assembly | 1–2 | Nothing. No ingredients consumed. | Select a different spread, or try again. |
+| Assembly | 3 | Bread, and potentially spread. | The order failed; retry or change the selection. |
+
+The pipeline never serves a partial or substandard sandwich. Every failure mode prefers wasting ingredients over delivering a bad experience.

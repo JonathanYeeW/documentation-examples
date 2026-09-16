@@ -34,11 +34,19 @@ Altitude is not prescribed. It is set entirely by where the start and end points
 
 ### Steps
 
-- **One bolded step title, then what happens.** Numbered to match the glance block exactly.
+- **A bolded step title, one or two sentences, then bullets.** Numbered to match the glance block exactly. The sentences say what the step is and what it decides; the bullets carry the facts. A reader skims the bullets and reads the opener only when they need to.
+- **A step with a single fact is a sentence.** Do not bullet one item. Two examples per collection is about right — they teach that the shape is a tool rather than a template.
+- **A different kind of item inside the list gets a bolded label.** A scar (`**INC-042**`), a caveat, an optimization note. The label says this line is not another fact of the same sort, and it costs nothing — no sub-heading, no separate block.
+- **No sub-headings inside a step.** If something seems to need one, it is a step.
+- **A lone argument stays prose, under the list.** Reasoning bulleted on its own reads as a task. Facts are bullets; the argument about them is a sentence underneath.
 - **Say what is decided at each step, not just what occurs.** A step that only narrates is a step a reader already inferred from the block.
 - **Name the failure the step is guarding against**, and what it costs when it fires. A quality gate's position in the sequence is a claim about what is cheap to waste.
-- **Reference a real incident where one shaped the design.** A rule with a scar attached does not get optimized away by the next person.
+- **Reference a real incident where one shaped the design.** A rule with a scar attached does not get optimized away by the next person. Reference it — `INC-042` — rather than narrating when it happened and what was learned.
 - **Say where a fact lives rather than restating it.** A value repeated from the standard that owns it is a value with two places to go stale.
+
+### Headings
+
+Top-level sections are `##` with no emoji, unlike the rest of this collection. A flow is read while looking at code or at a broken email, and the headings are navigation rather than decoration.
 
 ### Closing
 
@@ -51,5 +59,5 @@ Altitude is not prescribed. It is set entirely by where the start and end points
 
 | File | What It Covers |
 |---|---|
-| `cpf_sandwich-assembly.md` | Product altitude — a user approaching a machine to a sandwich in their hand, three phases across two actors, ending in metrics |
-| `cpf_assembly-pipeline.md` | Pipeline altitude — one function call to its return, conditional branches driven by configuration, ending in an error-handling section that classifies failures by what they waste |
+| `cpf_sandwich-assembly.md` | Product altitude — a user approaching a machine to a sandwich in their hand, three phases across two actors, ending in metrics. Shows two steps written as a bare sentence because they carry one fact each |
+| `cpf_assembly-pipeline.md` | Pipeline altitude — one function call to its return, conditional branches driven by configuration, ending in an error-handling table that classifies failures by what they waste |
