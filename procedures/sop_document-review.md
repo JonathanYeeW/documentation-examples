@@ -138,7 +138,7 @@ After:  (deleted)
 
 **B5. Session framing.** Written as a record of work rather than a statement of what is true. Flags: past tense about the system, first person plural, `as discussed`, `earlier we`. Replace with present tense.
 
-Exception: session logs are records by definition. B5 does not apply to them.
+Exception: session logs and meeting notes are records by definition. B5 does not apply to them.
 
 **B6. Inflation.** Three sentences doing one sentence's work. Flags: `in order to`, `it is important to`, `serves to`, `generally speaking`, doubled adjectives. Hedge only where the uncertainty is real.
 
@@ -165,6 +165,8 @@ Numbering claims sequence. Use it only where order is real. Numbering an unorder
 **C5. Transitions.** Every heading with subheadings under it needs one, or the reader lands on a heading followed by another heading with nothing to orient them.
 
 A transition is two sentences: what this section is, and why it matters. It never lists what's beneath it — that is what the headings and any overview block already do. It carries no background; background belongs in the summary if it belongs anywhere. If a section seems to need more than two sentences of introduction, the section needs restructuring, not a longer introduction.
+
+Exception: a meeting-note chapter opens with a paragraph summarizing the whole chapter. See `docs/communication/meeting-notes/README.md`.
 
 **C6. Repeated units at uneven depth.** Units of the same kind get the same amount of prose. Four goals where two have descriptions and two don't, or ten initiatives where four are one sentence and six are two, read as unfinished even when every individual entry is good.
 

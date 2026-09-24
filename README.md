@@ -47,6 +47,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `rln` | GitHub release notes — what shipped, why it matters, and how to upgrade |
 | `plan` | Implementation plan — the sequence and scope of a body of work: what's being built, in what order, what's in and out, and where it currently stands. Answers *what happens and in what order*, not *how each piece is shaped*. The default document for any multi-step work |
 | `nb` | Notebook — the record kept while executing a hands-on operation, written entry by entry as the work happens. Verbatim commands and output, retained failures, and a register of what now exists. Read afterward to reproduce a step or to extract a standard from what was settled |
+| `mtg` | Meeting notes — the record of one meeting, written from its transcript. What was discussed, decided, and left open, chaptered by thread, claiming no more than the recording supports |
 | `sa` | Self-assessment — quarterly or annual reflection on what happened, how the individual showed up, what they learned, and where they are heading. Written as a narrative rather than a list of accomplishments. |
 
 ## Organization
@@ -61,7 +62,7 @@ READMEs are their own category because they are front-door documents rather than
 | **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
 | **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `plans/`, `shipping/`, `explorations/`, `notebooks/` |
 | **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
-| **[communication/](communication/)** | Status, alignment, reflection | — |
+| **[communication/](communication/)** | Status, alignment, reflection | See `communication/` — organized into `meeting-notes/` |
 | **[people/](people/)** | Personal reflection and performance artifacts | `sa_pbj-co.md` |
 | **[llm/](llm/)** | SOPs and plugins — documents that tell an LLM how to act within a defined workflow | See `llm/` — organized into `sops/`, `plugins/` |
 | **[readmes/](readmes/)** | Front-door documents, organized by what they front — `repos/`, `contributing/`, `projects/`, `wikis/` | See `readmes/` |
