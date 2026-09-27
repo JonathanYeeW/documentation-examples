@@ -43,7 +43,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `rdm-project` | Project README — LLM orientation doc for an MDP project; what it is, where things live, current state |
 | `rdm-wiki` | Wiki README — the front door of a documentation directory; what it governs, an index of its children, and the shared rules that belong to none of them |
 | `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors. Applies to a documentation collection as well as a codebase |
-| `prd` | PR description — what changed, why, how to review it, and how to test it |
+| `prd` | PR description — what changed for the user and why, anchored in the customer journey, for anyone who knows the product |
 | `rln` | GitHub release notes — what shipped, why it matters, and how to upgrade |
 | `plan` | Implementation plan — the sequence and scope of a body of work: what's being built, in what order, what's in and out, and where it currently stands. Answers *what happens and in what order*, not *how each piece is shaped*. The default document for any multi-step work |
 | `nb` | Notebook — the record kept while executing a hands-on operation, written entry by entry as the work happens. Verbatim commands and output, retained failures, and a register of what now exists. Read afterward to reproduce a step or to extract a standard from what was settled |
@@ -60,7 +60,7 @@ READMEs are their own category because they are front-door documents rather than
 |---|---|---|
 | **[strategic/](strategic/)** | Why we exist, where we're going | `pv_pbj-co.md` |
 | **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
-| **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `plans/`, `shipping/`, `explorations/`, `notebooks/` |
+| **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `plans/`, `pr-descriptions/`, `shipping/`, `explorations/`, `notebooks/` |
 | **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
 | **[communication/](communication/)** | Status, alignment, reflection | See `communication/` — organized into `meeting-notes/` |
 | **[people/](people/)** | Personal reflection and performance artifacts | `sa_pbj-co.md` |
