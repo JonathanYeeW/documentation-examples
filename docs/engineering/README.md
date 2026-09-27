@@ -6,6 +6,8 @@ Documents that describe how we build things — architecture, implementation dec
 
 Engineers. A new engineer joining the team should be able to read the engineering docs and understand how the system works, why it was built that way, and where to make changes without breaking things.
 
+PR descriptions are the exception. They are written for anyone who knows the product, so they use the product's language rather than the code's. See [`pr-descriptions/`](pr-descriptions/).
+
 ## Organization
 
 Engineering examples are organized into six subcategories:

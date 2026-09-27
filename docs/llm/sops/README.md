@@ -66,4 +66,3 @@ The example is the artifact the procedure produces, not a transcript of the proc
 | File | What It Covers |
 |---|---|
 | [`sop_account-checkin.md`](sop_account-checkin.md) | A procedure that produces a document and saves it — three phases, one gate after context loading, detailed per-section output specs, and a path template |
-| [`sop_write-pr-description.md`](sop_write-pr-description.md) | A procedure that writes to an external system — named MCP tools and methods, a `Notes` section for when the procedure does not quite fit, and a gate placed after the write rather than before it |

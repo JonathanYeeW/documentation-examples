@@ -41,19 +41,22 @@ From his answers, play back the Context section — the journey bullets and the 
 
 ---
 
-## Phase 2 — Choose Who Drafts
+## Phase 2 — Choose Who Drafts, and in What Style
 
 The draft is always a file in the ticket workspace: `projects/[project]/tickets/[eng-xxx]/prd_[descriptive-name].md`. The cold read in Phase 4 needs a file to read, and GitHub only gets the final version.
 
-Ask who writes the first draft: Claude, or Jonathan.
+Ask two questions, together:
 
-> ⏸️ **GATE → Jonathan.** Choose who drafts.
+1. **Who writes the first draft?** Claude, or Jonathan.
+2. **Is there a writing style it should be in?** Name the styles in [`writing-styles/`](../writing-styles/) by folder, and accept any other Jonathan names. None is a valid answer.
+
+> ⏸️ **GATE → Jonathan.** Choose who drafts, and the style if any.
 
 ---
 
 ## Phase 3 — Draft and Review
 
-Write, or take, the draft against the standard in the type README: Context, Summary, then one Change section per item in the Summary. Read the example in [`docs/engineering/pr-descriptions/`](../docs/engineering/pr-descriptions/) before writing a line.
+Write, or take, the draft against the standard in the type README: Context, Summary, then one Change section per item in the Summary. Before writing a line, read the examples in [`docs/engineering/pr-descriptions/`](../docs/engineering/pr-descriptions/) for the shape, and, when a style was chosen, that style's file and its examples for the language.
 
 Deliver it with a note of three lines or fewer: what each Change section covers, and anything on the branch left out on purpose.
 
@@ -123,11 +126,13 @@ Confirm in chat with the PR link.
 
 ## Phase 6 — Fold Back
 
-Only when Phase 3 or Phase 4 showed the standard was wrong, not only this description. A correction Jonathan would make to any PR description is a correction to the type README; one about this change's subject is not.
+Two questions, asked together.
 
-Propose each change to [`docs/engineering/pr-descriptions/README.md`](../docs/engineering/pr-descriptions/README.md), its example, or this SOP, and review it with Jonathan before editing.
+**Was the standard wrong?** Only when Phase 3 or Phase 4 showed it, not only this description. A correction Jonathan would make to any PR description is a correction to the type README; one about this change's subject is not. Propose each change to [`docs/engineering/pr-descriptions/README.md`](../docs/engineering/pr-descriptions/README.md), its examples, or this SOP.
 
-> ⏸️ **GATE → Jonathan.** Accept or reject each proposed change. Most runs have nothing to fold back, and saying so is the whole of this phase.
+**Is this description an example of its style?** Only when a style was chosen in Phase 2. Ask whether the posted description belongs in that style's examples, by the style's own rule for adding one. If it does, propose a PB&J rewrite of it for the style's `examples/`. The collection is published, so a real product never goes in.
+
+> ⏸️ **GATE → Jonathan.** Accept or reject each proposal. Most runs have nothing for either question, and saying so is the whole of this phase.
 
 ---
 
