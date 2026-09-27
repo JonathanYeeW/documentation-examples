@@ -49,15 +49,9 @@ Then `This PR makes N changes:` and a numbered list. Each item is a bolded name 
 - **A current and new block**: one fenced block, `Current:` and then `New:`, each a sequence of single actions starting from the same situation. Mark the line that's new with `← new`. The two blocks should differ only where the change is.
 - **Bullets for what a reader would ask.** Each answers a question a product reader would actually raise: what happens when it collides with something already there, what the user sees at the edges, what stays the same. A bullet that answers a question nobody would ask comes out.
 
-### Product language
+### Writing style
 
-**Write it in the terms of the product, not the code.**
-
-- **Start from the problem as the user meets it**, not from the system.
-- **Name each change by what the user can now do**, with the user as the subject.
-- **Say what the user sees.** "That meal disappears from the day", not "the meal is removed".
-- **Use the app's real screen names and labels**, exactly as they appear.
-- **Define any word with two meanings** in the term bank before it is used.
+**A PR description can be written in any style in [`writing-styles/`](../../../writing-styles/)**, or in none. The procedure asks which. The conventions above hold either way; a style changes the wording, not the structure or what stays out.
 
 ### What stays out
 
