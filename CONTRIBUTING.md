@@ -20,6 +20,8 @@ The PB&J Machine Company is the fictional setting for every example here: a team
 
 No example names a real project, a real repository, a real person, or a real customer. An example citing a real system stops reading as a shape and starts reading as that system's documentation, and the next session then has to judge which parts were general.
 
+**Writing-style examples are the exception.** They live in each style's `examples/` folder, which git ignores, so each person keeps real ones from their own projects and none is published. The PB&J rule covers everything that is.
+
 ### The two settings
 
 Examples that need a codebase are anchored to two fictional ones, so paths line up across files rather than each inventing its own.

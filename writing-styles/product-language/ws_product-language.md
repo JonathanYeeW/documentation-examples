@@ -22,16 +22,12 @@ Anything a product reader wouldn't ask about: function, file and test names, how
 
 ## Examples
 
-Each example is a whole piece written in this style, in [`examples/`](examples/).
+Each example is a whole piece written in this style, kept in `examples/` beside this file. Git ignores every `examples/` folder, so each person keeps their own, taken from their own projects, and none is published. Read whatever is there before writing in this style.
 
-| File | What it shows |
-|---|---|
-| [`prd_family-order-change-and-copy.md`](examples/prd_family-order-change-and-copy.md) | A PR description with three changes: journey and terms before anything else, the problem in the Summary, and each change told as a current and new flow with the answers to what a reader would ask |
+A fresh clone has none. This file is then the whole description of the style.
 
 ## Adding an Example
 
 When a piece written in this style is accepted, ask whether it's worth adding. It is when it shows the style somewhere the examples don't yet: a different kind of document, a different kind of reader, or a problem the others didn't have.
 
-Rewrite it as PB&J before adding it. This collection is published, so an example never names a real product, project or person. Keep its shape, its length and its decisions, and change only the subject.
-
-Add it whole to `examples/`, named with its document type's prefix, and give it a row in the table above saying what it shows. When a newer example shows the same thing better, it replaces the older one rather than joining it.
+Copy it whole into `examples/`, named with its document type's prefix. It stays as written, real product and all, since it never leaves the machine. When a newer example shows the same thing better, it replaces the older one rather than joining it.

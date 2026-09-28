@@ -130,7 +130,7 @@ Two questions, asked together.
 
 **Was the standard wrong?** Only when Phase 3 or Phase 4 showed it, not only this description. A correction Jonathan would make to any PR description is a correction to the type README; one about this change's subject is not. Propose each change to [`docs/engineering/pr-descriptions/README.md`](../docs/engineering/pr-descriptions/README.md), its examples, or this SOP.
 
-**Is this description an example of its style?** Only when a style was chosen in Phase 2. Ask whether the posted description belongs in that style's examples, by the style's own rule for adding one. If it does, propose a PB&J rewrite of it for the style's `examples/`. The collection is published, so a real product never goes in.
+**Is this description an example of its style?** Only when a style was chosen in Phase 2. Ask whether the posted description belongs in that style's examples, by the style's own rule for adding one. If it does, copy the workspace file into the style's `examples/` as written. Git ignores `examples/`, so it stays local and a real product can go in.
 
 > ⏸️ **GATE → Jonathan.** Accept or reject each proposal. Most runs have nothing for either question, and saying so is the whole of this phase.
 

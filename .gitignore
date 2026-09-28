@@ -1,0 +1,4 @@
+# Examples are kept locally, from each person's own projects, and never
+# published. Every examples/ folder in the repo is ignored.
+**/examples/
+.DS_Store
