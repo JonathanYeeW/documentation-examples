@@ -27,7 +27,7 @@ READMEs and contributing guides that live inside codebases are in [`readmes/repo
 
 | Document | Purpose | Subcategory | Status |
 |---|---|---|---|
-| Ticket | A scoped unit of work — what's broken or what needs to be built, why it matters, acceptance criteria, and enough implementation context to pick it up without a meeting. Titles follow conventional commit prefix pattern (`feat:`, `bug:`, `refactor:`, `build:`, etc.), all lowercase. | `tickets/` | ✅ `tkt_spread-selector-state-fix.md`, `tkt_disable-spread-availability.md`, `tkt_order-service-registry-fallback.md` |
+| Ticket | A scoped unit of work — what a person can't do today, and what the product should do once it's resolved. Describes behavior, not the build. Titles follow conventional commit prefix pattern (`feat:`, `bug:`, `refactor:`, `build:`, etc.), all lowercase. | `tickets/` | ✅ `tkt_keep-the-spread-when-changing-bread.md`, `tkt_mark-a-spread-as-out.md`, `tkt_order-without-the-spread-list.md` |
 | PR Description | What changed for the user and why, anchored in the customer journey, so anyone who knows the product can explain and defend the change without reading the code. | `pr-descriptions/` | ✅ `prd_artisan-spread-selection.md` |
 | GitHub Release Notes | What shipped in a release, why it matters, and how to upgrade — written for developers watching the repo. Published alongside a tagged release. | `shipping/` | ✅ `rln_artisan-spread-selection.md` |
 | Exploration | Engineering investigation into a problem space — what's happening, why, and what the options are, before committing to a solution. | `explorations/` | ✅ `exp_spread-selection-reset.md` |

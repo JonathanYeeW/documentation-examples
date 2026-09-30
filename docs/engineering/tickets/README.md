@@ -69,6 +69,6 @@ A section with no flow of its own, like rules shared by two others, is bullets a
 
 | File | What It Covers |
 |---|---|
-| [`tkt_disable-spread-availability.md`](tkt_disable-spread-availability.md) | A feature for two people, staff and customers, with a section for each. The term bank separates the new **Out** from the existing **Out today**, and the Open questions hold what the cold read showed was undecided |
-| [`tkt_order-service-registry-fallback.md`](tkt_order-service-registry-fallback.md) | A reliability ticket, where the problem lives in the system but is written as the customer meets it: an error on Start. The staff section has no flow, only a rule, and the Open questions are the product risks of trusting an old copy |
-| [`tkt_spread-selector-state-fix.md`](tkt_spread-selector-state-fix.md) | A bug with one behavior and one section. The cause stays out; the Summary names what it costs, a failed order, rather than why it happens |
+| [`tkt_mark-a-spread-as-out.md`](tkt_mark-a-spread-as-out.md) | A feature for two people, staff and customers, with a section for each. The term bank separates the new **Out** from the existing **Out today**, and the Open questions hold what the cold read showed was undecided |
+| [`tkt_order-without-the-spread-list.md`](tkt_order-without-the-spread-list.md) | A reliability ticket, where the problem lives in the system but is written as the customer meets it: an error on Start. The staff section has no flow, only a rule, and the Open questions are the product risks of trusting an old copy |
+| [`tkt_keep-the-spread-when-changing-bread.md`](tkt_keep-the-spread-when-changing-bread.md) | A bug with one behavior and one section. The cause stays out; the Summary names what it costs, a failed order, rather than why it happens |

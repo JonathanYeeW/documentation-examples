@@ -4,7 +4,7 @@
 **Attendees:** Dana Moss (engineering manager, facilitating), Riley Okafor (on-call), Jordan Kim (eng), Maya (eng), Tom (eng), Alex Rivera (eng), Casey Nguyen (product), one dial-in participant
 **Type:** Standup — full engineering team
 **Source:** Meeting-tool transcript with speaker labels. The dial-in participant is labeled only "Phone 1."
-**Related:** `pm_peanut-butter-supplier-outage.md`, `pm_jelly-overapplication-degradation.md`, `tkt_order-service-registry-fallback.md`
+**Related:** `pm_peanut-butter-supplier-outage.md`, `pm_jelly-overapplication-degradation.md`, `tkt_order-without-the-spread-list.md`
 
 # 📋 Summary
 
