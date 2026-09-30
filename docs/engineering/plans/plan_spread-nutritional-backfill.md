@@ -6,16 +6,22 @@
 
 # 📋 Summary
 
-This plan describes how to backfill nutritional data onto the 34 spreads already in the Spread Registry. It covers four phases: building the atomic backfill endpoint, wrapping it in category-scoped bulk tools, running the full backfill, and removing the legacy field it replaces.
+This plan backfills nutritional data onto the 34 spreads already in the Spread Registry, and then removes the legacy field it replaces. Phases 1 and 2 build the tools, phase 3 runs them, and phase 4 cleans up. Phases 2–4 get detail as the phase before them finishes, since each depends on what the earlier run shows.
 
-# 🧭 Approach
+# 🧭 Context
 
-The backfill is a server endpoint plus a set of MCP tools that drive it. An agent derives calorie and allergen data from each spread's label and ingredient list, and the result is merged into the spread's existing config object.
+**Where this sits**
 
-1. **Build one endpoint that backfills an explicit list of spread IDs, and an MCP tool that wraps it.** Everything else is orchestration on top of this, so it has to be right first. A handful of real spreads run through it and the output is reviewed by hand before any automation exists.
-2. **Wrap the endpoint in one bulk tool per spread category.** Each tool scopes the ID list automatically instead of requiring it by hand, then drives the endpoint in batches.
-3. **Run the three bulk tools in sequence and re-run any failures individually.** The atomic tool from phase 1 is the retry mechanism.
-4. **Remove the legacy `calories_estimate` field** once every spread has a confirmed `nutrition` block.
+- The health dashboard shows calories and allergens for each spread.
+- New spreads get nutritional data when they're created. The 34 that predate that have none.
+- Some older spreads carry a `calories_estimate` field. The dashboard reads it today.
+- An agent can derive calories and allergens from a spread's label and ingredient list. PBJ-412 records why an agent was chosen over manual entry.
+
+**Terms**
+
+- **Nutrition block:** the calories and allergens stored inside a spread's config object.
+- **Atomic backfill:** backfilling an explicit list of spread IDs, returning one result per ID.
+- **Bulk tool:** an MCP tool that finds every spread in one category without a nutrition block and runs the atomic backfill over them in batches.
 
 # 🏗️ Implementation
 
@@ -30,75 +36,66 @@ Phase 4: Remove calories_estimate
 
 **Constraints**
 
-- Nutritional data lives inside the spread config object, not a separate table. It's always read alongside the rest of the config and never queried independently.
-- The backfill is idempotent. A spread with an existing `nutrition` block is skipped, so a re-run costs nothing.
-- New spreads get a `nutrition` block at creation time. This backfill exists only for the 34 that predate that.
-- Phase 2 adds no server endpoints. All three bulk tools live in the MCP server and drive the phase 1 endpoint.
+- The nutrition block lives inside the spread config object, not a separate table. It's always read with the rest of the config and never queried on its own.
+- The backfill is idempotent. A spread that already has a nutrition block is skipped.
+- Phase 2 adds no server endpoints. The bulk tools live in the MCP server and drive the phase 1 endpoint.
 
 ## Phase 1: Atomic Backfill Endpoint and MCP Tool
 
-Build the endpoint that backfills an explicit list of spread IDs, and the MCP tool that makes its output reviewable by hand.
+Build the endpoint that backfills an explicit list of spread IDs, and an MCP tool that makes its output reviewable by hand. Everything after is orchestration on top of it, so its output is reviewed before any automation exists.
 
-- [x] Accept `{ ids: string[] }` and return one status entry per input ID
-- [x] Fetch each spread config and skip it if a `nutrition` block already exists
-- [x] Call `spreadNutritionAgent` with the spread's label and known ingredients
-- [x] Merge the returned block into the config and save
-- [x] Wrap the endpoint in an MCP tool with human-readable output
-- [x] Run five real spreads through it and review the agent output
+- [x] Given a list of IDs, the endpoint returns one status per ID
+- [x] A spread with a nutrition block is skipped
+- [x] A backfilled spread's config carries the agent's nutrition block
+- [x] The MCP tool shows the output readably
+- [x] Five real spreads run through it, and their output is reviewed by hand
 
 **Context**
 
 - Endpoint response shape: `{ id, status: "ok" | "skipped" | "error", message? }[]`
-- Agent: `spreadNutritionAgent`, takes label and ingredient list
+- Agent: `spreadNutritionAgent`, which takes a label and an ingredient list
 
 ## Phase 2: Category-Scoped Bulk MCP Tools
 
-Build one MCP tool per spread category that scopes the ID list automatically and drives the phase 1 endpoint in batches.
+Build one bulk tool per spread category, starting with the largest. Each one is validated before the next is built, so a problem found in `nut_butter` isn't copied twice.
 
-- [ ] Build the `nut_butter` tool — 18 spreads
-- [ ] Validate its output before building the others
-- [ ] Build the `seed_butter` tool — 9 spreads
-- [ ] Build the `fruit_spread` tool — 7 spreads
-- [ ] Have each tool fetch spreads in its category lacking a `nutrition` block
-- [ ] Drive the phase 1 endpoint in batches of 10 with a short delay between batches
+- [ ] The `nut_butter` tool backfills its 18 spreads, and its output is validated
+- [ ] The `seed_butter` tool backfills its 9
+- [ ] The `fruit_spread` tool backfills its 7
 
 **Context**
 
 - Categories: `nut_butter` (18), `seed_butter` (9), `fruit_spread` (7)
-- Build order: `nut_butter` first for maximum coverage
-- `fruit_spread` is blocked — the registry holds only a flavor label for these, and the agent needs an ingredient list. Either hardcode lists for the seven, or add an `ingredients` field to the registry
+- `fruit_spread` is blocked. The registry holds only a flavour label for these, and the agent needs an ingredient list. The options are to hardcode lists for the seven, or add an `ingredients` field to the registry
+- Starting ideas, to test here rather than take as decided: batches of 10, with a short delay between batches
 
 ## Phase 3: Full Backfill Run
 
-Run the three bulk tools in sequence and confirm all 34 spreads come back with a `nutrition` block.
+Run the three bulk tools and confirm every spread has a nutrition block. Failures are retried one at a time through the phase 1 tool.
 
-- [ ] Run the `nut_butter` tool and check its output
-- [ ] Run the `seed_butter` tool and check its output
-- [ ] Run the `fruit_spread` tool and check its output
-- [ ] Re-run any failed IDs through the phase 1 tool directly
+- [ ] All 34 spreads have a nutrition block, with zero errors
 
 **Context**
 
-- Expected: 34 spreads with a `nutrition` block, zero errors
+- Expected: 34 spreads with a nutrition block. That's 18 `nut_butter`, 9 `seed_butter` and 7 `fruit_spread`
 
 ## Phase 4: Remove `calories_estimate`
 
-Delete the legacy field the `nutrition` block replaces, now that every spread carries real data.
+Delete the legacy field the nutrition block replaces. It's last because the dashboard reads the field until every spread has real data.
 
-- [ ] Confirm all 34 spreads have a `nutrition` block
-- [ ] Fetch every spread config, delete `calories_estimate` if present, and save
-- [ ] Confirm the health dashboard reads only from `nutrition`
+- [ ] No spread config has `calories_estimate`
+- [ ] The health dashboard reads only from the nutrition block
 
 **Context**
 
-- Legacy field: `calories_estimate`, present on some configs but not all
-- Allergen format is unconfirmed — the agent returns a string array and the health dashboard team hasn't said whether they want that or a pre-formatted string. Settle it before this phase, or the backfill has to re-run
+- `calories_estimate` is present on some configs, not all
+- The allergen format is unconfirmed. The agent returns a string array, and the health dashboard team hasn't said whether they want that or a pre-formatted string. It has to be settled before this phase, or the backfill has to re-run
 
 # 📊 Current Status
 
 | | Status | Notes |
 |---|---|---|
 | Phase 1 — atomic endpoint + MCP tool | ✅ Complete | Validated on 5 spreads |
-| Phase 2 — category bulk tools | ⬜ Not started | `fruit_spread` blocked on ingredient sourcing |
-| Phase 3 — full backfill run | ⬜ Not started | After phase 2 validated |
-| Phase 4 — remove `calories_estimate` | ⬜ Not started | After phase 3 complete |
+| Phase 2 — category bulk tools | ⬜ Not started | `fruit_spread` blocked on sourcing ingredient lists |
+| Phase 3 — full backfill run | ⬜ Not started | Gated on phase 2's validated tools |
+| Phase 4 — remove `calories_estimate` | ⬜ Not started | Gated on phase 3, and on the allergen format |
