@@ -15,7 +15,7 @@ This plan moves the Spread Registry from a static config file to a database tabl
 - The assembly pipeline reads the registry on every order, and it can't be paused.
 - The registry is `spread-registry.ts`, a config file. Adding a spread means a code change and a deploy.
 - The ops team can't add a spread without an engineer. The case for the move, and the admin UI it enables, is in PBJ-451.
-- `SpreadStore`'s interface was settled in `fsp_spread-store.md`, so this plan names its methods.
+- `SpreadStore`'s interface was settled in PBJ-451, so this plan names its methods.
 
 **Terms**
 

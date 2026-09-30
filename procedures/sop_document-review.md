@@ -116,6 +116,10 @@ Appendices are usually this failure wearing a disguise. Content pushed to an app
 
 **A4. Reasoning argued more than once.** The same justification made in three sections. State it once, where the decision surfaces. Later sections state the consequence, not the argument.
 
+**A5. Prescribing beyond what's decided.** An instruction about how to build something that nobody has decided or verified: a field name, a class, a function signature, a migration number, written as though it were settled. It takes the choice away from the person who will read the code properly. The test is whether the reader would be wrong to do it differently. If deviating breaks a decision, it stays, as a constraint. If deviating is only a different way to reach the same outcome, it becomes the outcome. A guess worth keeping is labelled as one ("starting ideas, to test here rather than take as decided") in the place that will test it. Verified facts stay, as facts.
+
+Flags: implementation detail in a checklist item, a constraint no one decided, and a specific shape with nothing saying where it was settled.
+
 ### Tier B — Prose
 
 **B1. Editorializing.** The writer's assessment leaking into the description. Flags: `elegant`, `powerful`, `robust`, `critical`, `significant`, `seamless`, `comprehensive`, `simply`, `just`, `cleanly`. Replace with the fact, unqualified.
