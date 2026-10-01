@@ -39,7 +39,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `sop` | Standard operating procedure — step-by-step procedure for an LLM to follow |
 | `plg` | Plugin — an extension loaded at a fixed point in a session, either a standing constraint held for the whole session or a conditional procedure run when its trigger is met |
 | `rdm-repo` | Repo README — entry point for a codebase; what it does, how to run it, how to contribute |
-| `rdm-project` | Project README — LLM orientation doc for an MDP project; what it is, where things live, current state |
+| `rdm-project` | Project README — LLM orientation doc for a project; what it is, where things live, current state |
 | `rdm-wiki` | Wiki README — the front door of a documentation directory; what it governs, an index of its children, and the shared rules that belong to none of them |
 | `ctb` | Contributing — architecture overview, dev setup, and testing guidelines for contributors. Applies to a documentation collection as well as a codebase |
 | `prd` | PR description — what changed for the user and why, anchored in the customer journey, for anyone who knows the product |

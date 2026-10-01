@@ -63,7 +63,7 @@ A section with no flow of its own, like rules shared by two others, is bullets a
 - Function, file, service and table names.
 - Architecture, data models, and the options considered for them.
 - Why the build was chosen. That reasoning goes in the ticket workspace.
-- Type, priority and dates. Linear holds them.
+- Type, priority and dates. The ticket tracker holds them.
 
 ## Examples
 
