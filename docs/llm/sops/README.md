@@ -12,7 +12,7 @@ An SOP exists because a procedure that lives in someone's head is run differentl
 - **The steps have an order that matters.** If the steps could be done in any sequence, a checklist in a README serves better.
 - **A human needs to intervene partway.** Gates are the point. A procedure that runs unattended end to end is a script, and should be written as one.
 - **Not a plugin.** A plugin loads at a fixed point in a session and either holds a constraint for the whole session or runs when its trigger fires. An SOP is invoked deliberately to produce something. See [`../plugins/`](../plugins/).
-- **Not a knowledge base article.** A `kb-op` explains how a system works. An SOP tells a model what to do. If the reader finishes and knows something rather than having produced something, it is a `kb-op`.
+- **Not a wiki article.** A wiki article explains how something works. An SOP tells a model what to do. If the reader finishes and knows something rather than having produced something, it is a wiki article.
 
 ## Conventions
 
