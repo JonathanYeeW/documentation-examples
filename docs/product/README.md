@@ -12,6 +12,7 @@ Product, design, and engineering. These are the shared language between the peop
 |---|---|
 | **[feature-specs/](feature-specs/)** | Feature specs (`fsp`) — an implementation-ready plan for one feature, layered from product altitude down to pseudocode |
 | **[core-product-flows/](core-product-flows/)** | Core product flows (`cpf`) — the critical path through a system, from a defined start state to a defined end state |
+| **[wiki/](wiki/)** | Wiki articles (`wiki`) — how a concept the product has works, and the decisions that shape it, for a reader starting cold |
 | `roadmaps/` *(planned)* | Product roadmaps (`rmp`) — what we're building over the next quarter or year, by priority and sequence |
 | `research/` *(planned)* | User research findings (`urf`) — patterns, pain points, and opportunities from talking to users |
 

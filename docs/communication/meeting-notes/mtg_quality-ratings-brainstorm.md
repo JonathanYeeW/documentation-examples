@@ -4,7 +4,7 @@
 **Attendees:** Casey Nguyen (product), Jordan Kim (eng)
 **Type:** 1:1 — brainstorm, no agenda
 **Source:** Voice memo recorded on a phone. No speaker labels, and the recording begins a few minutes into the conversation. Points are attributed only where the speaker is clear from context.
-**Related:** `pm_jelly-overapplication-degradation.md`, `kb-con_quality-model.md`
+**Related:** `pm_jelly-overapplication-degradation.md`, `wiki_quality-model.md`
 
 # 📋 Summary
 

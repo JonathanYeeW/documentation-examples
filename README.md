@@ -33,8 +33,7 @@ The prefix is a short identifier for the document type. The suffix describes the
 | `fsp` | Feature spec — the shape of one piece of work: function signatures, inputs and outputs, error handling, and edge cases. Zooms into how a single step gets built. Reach for one when the shape needs settling before code exists |
 | `cpf` | Core product flow — the critical path through a system at any altitude |
 | `exp` | Exploration — engineering investigation into a problem space |
-| `kb-op` | Knowledge base (operational) — step-by-step reference for how a specific system or mechanism works, with code references |
-| `kb-con` | Knowledge base (conceptual) — mental model for how something works as a whole; no steps or filenames |
+| `wiki` | Wiki article — how a concept the product has works, and the decisions that shape it, in product language for a reader starting cold; no filenames |
 | `pm` | Postmortem — what went wrong, why, and what we're doing about it |
 | `tkt` | Ticket — scoped unit of work with acceptance criteria and implementation context |
 | `sop` | Standard operating procedure — step-by-step procedure for an LLM to follow |
@@ -59,9 +58,9 @@ READMEs are their own category because they are front-door documents rather than
 | Category | What It Covers | Examples |
 |---|---|---|
 | **[strategic/](strategic/)** | Why we exist, where we're going | `pv_pbj-co.md` |
-| **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md` |
+| **[product/](product/)** | What we're building and why | `fsp_artisan-spread-selection.md`, `cpf_sandwich-assembly.md`, `cpf_assembly-pipeline.md`, `wiki_order-lifecycle.md` |
 | **[engineering/](engineering/)** | How we build it | See `engineering/` — organized into `tickets/`, `plans/`, `pr-descriptions/`, `shipping/`, `explorations/`, `notebooks/` |
-| **[operations/](operations/)** | How we run it | See `operations/` — `knowledge-base/` for reference docs, flat for postmortems |
+| **[operations/](operations/)** | How we run it | Postmortems, flat in `operations/` |
 | **[communication/](communication/)** | Status, alignment, reflection | See `communication/` — organized into `meeting-notes/` |
 | **[people/](people/)** | Personal reflection and performance artifacts | `sa_pbj-co.md` |
 | **[llm/](llm/)** | SOPs and plugins — documents that tell an LLM how to act within a defined workflow | See `llm/` — organized into `sops/`, `plugins/` |
