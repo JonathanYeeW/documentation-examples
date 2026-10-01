@@ -6,7 +6,7 @@ It holds what's true now, in present tense, and is updated in place when that ch
 
 ## When to Write One
 
-**Write one when a concept needs explaining and isn't a flow.** A core product flow (`cpf`) covers a sequence someone walks through. A wiki article covers something the product has, like an order's lifecycle, the quality gates, or how recommendations are chosen.
+**Write one when a concept needs explaining and isn't a flow.** A core product flow (`cpf`) covers a sequence someone walks through. A wiki article covers something the product has, like an order's lifecycle, the quality gates, or how spread availability works.
 
 - **Not a flow.** If the article is a sequence of steps a person takes, it's a `cpf`.
 - **Not a feature spec.** A spec (`fsp`) shapes something about to be built, down to its code. A wiki article stays at product altitude and carries no file references.
@@ -25,7 +25,7 @@ It holds what's true now, in present tense, and is updated in place when that ch
 | `# ⚙️ Section 1: …` | The model every unit shares, with one worked example |
 | `# Section 2: …` onward | The units, grouped by the moment a person meets them |
 
-Summary and Context are unnumbered. Every section after them is a numbered H1 with an emoji ("Section 1: How a Question Works"), and its H2s are numbered under it ("2.1 Meal habit"). The numbers make the two heading levels distinct at a glance.
+Summary and Context are unnumbered. Every section after them is a numbered H1 with an emoji ("Section 1: How an Order Moves"), and its H2s are numbered under it ("2.1 Submitted"). The numbers make the two heading levels distinct at a glance.
 
 ### Summary
 
@@ -44,7 +44,7 @@ Context is what a reader needs in their head before the model. It has the same s
 
 **Section 1 is the model every unit shares.** It's where the concept's own words are defined, where they're first used, not in Terms. A reader forgets a glossary by the time the word appears.
 
-- **Every rule lives in the model,** stated as a current rule with its reason in a clause: "a leftover isn't counted as another time planned, because it was cooked once". There's no separate rules section.
+- **Every rule lives in the model,** stated as a current rule with its reason in a clause: "ready to collected is the one timed move, because the pickup sensor can't tell a collected sandwich from an abandoned one". There's no separate rules section.
 - **One worked example** shows the model working on a real case: one fenced block, with each line labelled the same way.
 - **The section ends by naming the moments** the following sections are grouped by, in order.
 
