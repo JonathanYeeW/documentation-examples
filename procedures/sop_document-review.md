@@ -132,7 +132,7 @@ The test: if a line could be lifted out and posted on its own, it is performing.
 Before: That order asks reading to do a job only round-tripping can do.
 After:  Schema problems surface on round-trip, not on review.
 
-Before: The moment to watch for: turning it on and seeing your own migrated recipes for the first time.
+Before: The moment to watch for: turning it on and seeing your own spreads in the new registry for the first time.
 After:  (deleted)
 ```
 
