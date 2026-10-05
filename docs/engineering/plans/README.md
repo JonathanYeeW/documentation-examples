@@ -4,6 +4,8 @@ An implementation plan is the sequence and scope of a body of work — what is b
 
 It is the working document of a multi-session effort. It is written before the work starts, read at the top of every session that continues it, and edited as phases complete. A plan that is only ever written and never updated has been used as a proposal, which is a different document.
 
+The procedure for making one from a conversation about a ticket — taking stock, loading the standards, investigating, and the gates — is [`procedures/sop_make-a-plan.md`](../../../procedures/sop_make-a-plan.md).
+
 ## When to Use One
 
 **Write one when the work has an order that matters.** If the steps could be done in any sequence, a ticket holds them. A plan exists because phase 3 is unsafe before phase 2, and someone has to be able to see that without reconstructing it.
