@@ -76,7 +76,7 @@ Read the code the ticket will change, if the session hasn't. Then investigate ea
 
 ## Phase 5 — Write the Plan
 
-Write the plan to the plans standard, at `projects/[project-name]/tickets/[eng-xxx]/plan_[descriptive-name].md`. When extending an existing plan, edit it in place.
+Write the plan to the plans standard, at `projects/[project]/tickets/[eng-xxx]/plan_[descriptive-name].md`. When extending an existing plan, edit it in place.
 
 - **Everything settled in the conversation and at the gate is written into the plan.** The reader wasn't there, so a plan that depends on the conversation can't be followed.
 - **Test gates follow the testing standards** loaded in Phase 2.
