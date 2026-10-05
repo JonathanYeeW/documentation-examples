@@ -104,9 +104,9 @@ A type that stops at step 1 is an example without a home, and a type that starts
 
 **A change here is accepted by Jonathan, not merged on its own.** These examples are what every future document is written against, so a wrong shape propagates further than a wrong document.
 
-**A substantial rewrite runs [`procedures/sop_document-review.md`](procedures/sop_document-review.md).** It gates on purpose and on the reference example before drafting, and on acceptance before replacing the original. Its Phase 4 is what folds an accepted correction back into the type it came from.
+**A substantial rewrite runs [`procedures/sop_document-review.md`](procedures/sop_document-review.md).** It gates on purpose and on the reference example before drafting, and on acceptance before folding corrections back. Its Phase 4 is what folds an accepted correction back into the type it came from.
 
-**Writing a document from scratch has no input document**, so the review SOP's Phase 2 writes the real file rather than a draft beside an original. Every other phase runs unchanged.
+**Writing a document from scratch has no input document**, so the review SOP's Phase 2 writes a new file rather than editing one, and there is no original to compare against. Every other phase runs unchanged.
 
 ## Commit Messages
 

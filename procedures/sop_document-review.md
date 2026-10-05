@@ -46,7 +46,7 @@ Restate the purpose in one sentence and get agreement. That sentence is the test
 
 Apply the standard and produce the rewritten document. Do not produce a findings list, a critique, or a list of proposed changes — the opinions go into the draft. The draft is the argument.
 
-Save it as a new file alongside the original. That file is the workspace for the rest of the run — every later change is applied to it in place. The original is never modified.
+Edit the document in place. No second file is created — every change for the rest of the run is applied to the document itself. The original stays readable through version control, so the user reads the draft against it as a diff. If the document isn't under version control, copy the original to a scratch location outside the project before the first edit, and compare against that.
 
 Rules for the draft:
 
@@ -67,13 +67,13 @@ Deliver the draft with a short note — three lines or fewer:
 
 ## Phase 3 — Review and Iterate
 
-The user reacts to the draft. Apply changes directly to the workspace file and re-deliver.
+The user reacts to the draft. Apply changes directly to the document and re-deliver.
 
 Expect several full rewrites before form settles. The first draft usually gets content fit roughly right and form wrong, so a rewrite driven entirely by form is the normal path rather than a failure.
 
 Reactions to form and presentation are where the standard is least settled. When a reaction contradicts the standard, the standard is what changes — capture it as a new or amended criterion rather than treating it as a one-off correction.
 
-Loop until the user accepts. On acceptance, the draft replaces the original.
+Loop until the user accepts.
 
 > ⏸️ **GATE → User.** The user accepts the draft before anything is folded back.
 
