@@ -26,7 +26,7 @@ Sections in this order:
 | `## Trigger` | Always | The exact phrase or condition that starts it, and what the model does first |
 | `## Phase N — <name>` | Always | The work, in order. One phase per meaningful unit |
 | `## Notes` | Optional | Edge cases, assumptions about context, what to do when the procedure does not quite fit |
-| `## Example` | Always | A finished artifact produced by the procedure |
+| `## Example` | Unless the output's type has its own examples | A finished artifact produced by the procedure |
 
 **Phases are numbered and named.** `## Phase 2 — Build the Doc`, not `## Step 2`. The name is what a session uses to say where it is.
 
@@ -60,6 +60,8 @@ Sections in this order:
 **Every SOP ends with a worked output**, separated by a horizontal rule and introduced by a line naming what it is an example of.
 
 The example is the artifact the procedure produces, not a transcript of the procedure running. A reader comparing their output against it should be comparing like for like.
+
+**An SOP whose output is a document type with its own examples in this collection has no Example section.** The procedure points to that type's README, and its examples are the ones a reader compares against. A copy in the SOP would drift from them.
 
 ## Examples
 
