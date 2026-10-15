@@ -51,7 +51,7 @@ Top-level sections are `#` with an emoji, matching the house convention across t
 
 - **`Where this sits`** — bullets on where the work sits in the system or the customer journey, how it behaves today, and why the tickets share one plan. Facts only.
 - **The argument for doing the work stays in the document that owns it** — the ticket, the ticket workspace, or an exploration. Context links to it rather than restating it.
-- **`Terms`** — every word the constraints and phases use that a reader wouldn't know, including the product's own action names. When two words name one thing, pick one and use it everywhere.
+- **`Terms`** — every word the constraints and phases use that a reader wouldn't know, including the product's own action names and the process words the plan leans on, such as a review label or a later ticket step. When two words name one thing, pick one and use it everywhere.
 - **A term is defined once.** A phase that needs the code-level version of a term states only the code fact.
 
 ### The phase diagram
@@ -78,7 +78,9 @@ Top-level sections are `#` with an emoji, matching the house convention across t
 - **Phases further out stay thin.** A phase gets detail when the phase before it finishes, because that is when what it depends on is known. The plan is edited as it goes, and that is when to add it.
 - **A decision made during a phase is recorded in the document that owns it**, and the checklist item says so: "decided and recorded in the quality model article".
 - **The last item of a phase is usually its check** — the confirmation, the review, the comparison run. That is the item the next phase gates on.
+- **Every item can be confirmed inside its own phase.** If an item is proved by a run that happens later, such as an end-to-end suite deferred to the end, the item names what this phase leaves behind, and the run belongs to the step that performs it. "The other journeys need no edits" can be checked in the phase; "the other journeys pass" can't.
 - **A phase ends with a `Context` block when it has lookup values.** Only verified ones: table and column names, flags and their values, file paths, expected counts, build order. These are things a reader copies rather than reads. A phase with nothing to look up has no block.
+- **A lookup value points at a name, not a line number.** A function, a test name, a section heading. Line numbers move with the first edit, and the plan is read across sessions.
 - **A blocker lives in the `Context` of the phase it blocks**, stated with the options for clearing it. That is where the person doing the work will be looking, and it keeps the plan from needing a separate risks section.
 - **Expected counts are written down before the phase runs.** "34 rows — 18, 9, 7" is what makes a result checkable instead of plausible.
 

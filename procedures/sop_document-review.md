@@ -55,13 +55,23 @@ Rules for the draft:
 - **Structure may change** when the structure is the problem — moving reference content out of a sequence, merging sections that repeat each other, splitting one that buries a claim.
 - **Cut content moves, it does not vanish.** When reasoning worth keeping is removed, name where it should go (ticket workspace, session log) so it can be moved.
 
-Deliver the draft with a short note — three lines or fewer:
+Before delivering, run at least one **cold read**: a fresh agent with no session context reads the draft as its intended reader would, about to act on it. It gets only the draft, the reference standard, the documents the draft links to, and whatever the draft describes (code, data, other docs). It reports what it would have to guess at, where two readings would lead to different results, any claim that's wrong against the source, anything that disagrees with a linked document, and what prescribes beyond a decision. The session that wrote the draft can't see these, because it carries the conversation that filled the gaps.
+
+Sort the findings, and fold them in under the same rules:
+
+- **Fixed** — a stale or wrong fact, a contradiction with a linked document, a missing pointer. Apply it to the draft.
+- **Left open** — the finding asks the document to prescribe something the standard keeps out (A5). Say why it stays out.
+- **For the user** — a decision the document doesn't hold. Bring it to the gate as a question with a recommendation, not into the draft.
+
+Run another cold read whenever the draft changes materially, with a fresh agent each time.
+
+Deliver the draft with a short note — three lines or fewer — followed by the sorted cold-read findings:
 
 - Length before → after
 - What drove most of the change
 - Anything cut that needs a home elsewhere
 
-> ⏸️ **GATE → User.** The draft is read against the original.
+> ⏸️ **GATE → User.** The draft is read against the original, along with the cold read's questions.
 
 ---
 

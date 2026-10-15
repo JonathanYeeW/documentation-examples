@@ -34,6 +34,7 @@ Nothing else. A section that doesn't fit one of these belongs in the ticket work
 
 - **Where this sits in the journey** is a bolded label and a few bullets: the screen, what the user is doing there, and how they got there. Every other section is read against it.
 - **Terms** is a bolded label and a bullet per term, each a bold word and a one-line definition. A term earns a place when the description uses it in a way a product reader could misread, most often a word with two meanings. When two terms are easy to confuse, one example sentence saying they differ is worth more than a longer definition.
+- **A screen is named as it's capitalised on screen**, everywhere in the description: "the Add a meal screen", "All Recipes". Lowercased inside a sentence, a screen whose name is a phrase reads as an action, and the reader has to stop to tell which it is.
 
 ### Summary
 
