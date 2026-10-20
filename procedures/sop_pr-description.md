@@ -1,15 +1,17 @@
 # SOP: PR Description
 
 **Created:** 2026-09-27
-**Purpose:** Write a PR description with Jonathan, check it with a reader who wasn't in the session, and post it. The standard it is written against is [`docs/engineering/pr-descriptions/README.md`](../docs/engineering/pr-descriptions/README.md).
+**Purpose:** Write a PR description with the user, check it with a reader who wasn't in the session, and post it. The standard it is written against is [`docs/engineering/pr-descriptions/README.md`](../docs/engineering/pr-descriptions/README.md).
 
 ---
 
 ## Trigger
 
-Jonathan drops a PR link in chat, or says `"write the PR description"`.
+The user drops a PR link in chat, or says `"write the PR description"`.
 
-Begin Phase 1.
+Begin Phase 1, driven: the user answers at every gate.
+
+**Self-run.** When the user says to run it without them ("write the PR description yourself", "run it yourself", "self-run"), the same phases run with the gates replaced as in [Self-run](#self-run) below. Without one of those words, the run is driven. "Open the PR and write the description yourself" also covers creating the branch, pushing and opening the PR first, since the user saying it is that gate.
 
 ---
 
@@ -17,7 +19,7 @@ Begin Phase 1.
 
 A PR description is the whiteboard defense, written down. Someone who knows the product but wasn't in the session reads it and can explain what changed for the user and why, without opening the code.
 
-Everything below is how that gets tested before it is posted: Jonathan sets the altitude in his own words, the draft is written against the standard, and a reader with none of the session's context says where it loses them.
+Everything below is how that gets tested before it is posted: the user sets the altitude in their own words, the draft is written against the standard, and a reader with none of the session's context says where it loses them.
 
 ---
 
@@ -29,15 +31,15 @@ Load context first, without reporting it:
 2. **What changed** — from the local clone when the session can reach one: `git log --oneline origin/[base]..origin/[head]` and `git diff --stat origin/[base]...origin/[head]`, reading individual diffs only where needed. Via GitHub MCP (`get_files`, then `get_diff`) when it cannot. A large PR's full diff does not fit in context; start from the commit list.
 3. **What was decided** — each covered ticket's workspace README at `projects/[project]/tickets/[eng-xxx]/README.md`, and the session logs it lists. Linear only when no workspace exists.
 
-Then ask Jonathan three questions, together:
+Then ask the user three questions, together:
 
-1. **What are the changes, in your own words?** Asked before saying anything about the diff. His answer sets the altitude; the diff fills in the facts.
+1. **What are the changes, in your own words?** Asked before saying anything about the diff. Their answer sets the altitude; the diff fills in the facts.
 2. **Where does this sit in the customer journey?** The screen, and what the user is doing there. This anchors every other section, so it is settled first.
 3. **What does someone need to know to follow it cold?** The terms, and the part of the product they'd need in their head.
 
-From his answers, play back the Context section — the journey bullets and the term bank — as it would appear in the description.
+From their answers, play back the Context section — the journey bullets and the term bank — as it would appear in the description.
 
-> ⏸️ **GATE → Jonathan.** Correct the Context. Nothing is drafted until the journey and the terms are agreed.
+> ⏸️ **GATE → User.** Correct the Context. Nothing is drafted until the journey and the terms are agreed.
 
 ---
 
@@ -48,9 +50,9 @@ Claude writes the first draft, always as a file, since the cold read in Phase 4 
 - **With a ticket:** `projects/[project]/tickets/[eng-xxx]/prd_[descriptive-name].md`
 - **Without one:** `projects/[project]/artifacts/prd_[descriptive-name].md`
 
-Ask one question: **is there a writing style it should be in?** Name the styles in [`writing-styles/`](../writing-styles/) by folder, and accept any other Jonathan names. None is a valid answer.
+Ask one question: **is there a writing style it should be in?** Name the styles in [`writing-styles/`](../writing-styles/) by folder, and accept any other style the user names. None is a valid answer.
 
-> ⏸️ **GATE → Jonathan.** Choose the style, if any.
+> ⏸️ **GATE → User.** Choose the style, if any.
 
 ---
 
@@ -60,9 +62,9 @@ Write the draft against the standard in the type README: Context, Summary, then 
 
 Deliver it with a note of three lines or fewer: what each Change section covers, and anything on the branch left out on purpose.
 
-Jonathan reacts. Apply changes to the workspace file and re-deliver. Expect several passes, most of them about wording: the first draft usually has the content right and the language one level too close to the code.
+The user reacts. Apply changes to the workspace file and re-deliver. Expect several passes, most of them about wording: the first draft usually has the content right and the language one level too close to the code.
 
-> ⏸️ **GATE → Jonathan.** The draft reads right to him. Then the cold read.
+> ⏸️ **GATE → User.** The draft reads right to them. Then the cold read.
 
 ---
 
@@ -104,7 +106,7 @@ Here is the PR description:
 ---
 ```
 
-Report back to Jonathan in three groups:
+Report back to the user in three groups:
 
 - **Fix in the description.** A factual error, a term used before it is defined, a line two readers would take two ways.
 - **Park.** A question about how the product should behave, not about what the description says. It goes in the ticket workspace's Open Questions, or beside the draft when there's no ticket, not in the description.
@@ -112,7 +114,7 @@ Report back to Jonathan in three groups:
 
 The reader's whiteboard paragraph is the verdict. When it is right and the questions have turned from what the description means to how the product should behave, the description works.
 
-> ⏸️ **GATE → Jonathan.** Choose which fixes to make. After substantial fixes, run the cold read again with a fresh subagent. A reader who saw the last draft is no longer cold.
+> ⏸️ **GATE → User.** Choose which fixes to make. After substantial fixes, run the cold read again with a fresh subagent. A reader who saw the last draft is no longer cold.
 
 ---
 
@@ -128,11 +130,37 @@ Confirm in chat with the PR link.
 
 Two questions, asked together.
 
-**Was the standard wrong?** Only when Phase 3 or Phase 4 showed it, not only this description. A correction Jonathan would make to any PR description is a correction to the type README; one about this change's subject is not. Propose each change to [`docs/engineering/pr-descriptions/README.md`](../docs/engineering/pr-descriptions/README.md), its examples, or this SOP.
+**Was the standard wrong?** Only when Phase 3 or Phase 4 showed it, not only this description. A correction the user would make to any PR description is a correction to the type README; one about this change's subject is not. Propose each change to [`docs/engineering/pr-descriptions/README.md`](../docs/engineering/pr-descriptions/README.md), its examples, or this SOP.
 
 **Is this description an example of its style?** Only when a style was chosen in Phase 2. Ask whether the posted description belongs in that style's examples, by the style's own rule for adding one. If it does, copy the workspace file into the style's `examples/` as written. Git ignores `examples/`, so it stays local and a real product can go in.
 
-> ⏸️ **GATE → Jonathan.** Accept or reject each proposal. Most runs have nothing for either question, and saying so is the whole of this phase.
+> ⏸️ **GATE → User.** Accept or reject each proposal. Most runs have nothing for either question, and saying so is the whole of this phase.
+
+---
+
+## Self-run
+
+The same phases, with each gate replaced by a rule. What the user would have answered is written down where they will see it, so their review on GitHub can check the calls made for them.
+
+| Phase | Driven gate | Self-run |
+|---|---|---|
+| 1. Questions | The user answers the three questions and corrects the Context | Claude answers them from the workspace README, the session's conversation and the diff, and writes the answers into the draft file under `## Answered for you`, removed before posting. No gate |
+| 2. Style | The user chooses one | The style the project's last posted PR description used, or none |
+| 3. Draft and review | The draft reads right to the user | No reaction pass. Claude checks the draft against the standard before the cold read |
+| 4. Cold read | The user chooses the fixes | Claude sorts the findings: Fix is applied, Park goes to the workspace's Open Questions, Leave stays out with the rule that keeps it out. A fresh reader runs after substantial fixes |
+| 5. Post | — | Posted |
+| 6. Fold back | The user accepts or rejects each proposal | Proposals are listed in the report, not applied. A change to a standard still waits for the user |
+
+**The stop rule is Phase 4's verdict:** the reader's whiteboard paragraph is right, and their questions are about how the product should behave, not what the description means. At most three cold reads. If the third reader still gets it wrong, stop before posting and bring the draft and findings to the user.
+
+**The report replaces the gates.** One message, after posting:
+
+- The PR link.
+- The last reader's whiteboard paragraph.
+- What was answered for the user in Phase 1, and the style chosen.
+- The fixes taken, parked and left, in a line each.
+- How many cold reads it took.
+- Any fold-back proposals.
 
 ---
 
