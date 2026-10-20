@@ -7,7 +7,7 @@
 
 ## Trigger
 
-Jonathan says: `"make a plan"`.
+The user says: `"make a plan"`.
 
 The ticket has already been talked through in this session, with the project and ticket loaded. If the ticket has no workspace yet, create one first.
 
@@ -19,8 +19,8 @@ Claude begins Phase 1.
 
 Sort what the conversation produced by who settled it:
 
-- **Decided by Jonathan** — anything he stated or agreed to.
-- **Claude's readings** — anything Claude proposed or inferred that Jonathan didn't explicitly take up. A reading is not a decision, however long it has been in the conversation.
+- **Decided by the user** — anything they stated or agreed to.
+- **Claude's readings** — anything Claude proposed or inferred that the user didn't explicitly take up. A reading is not a decision, however long it has been in the conversation.
 - **Still open** — questions raised and not answered, and build decisions the ticket leaves open. Tickets describe the product, so how it gets built is decided here.
 
 Then fill gaps. Read the Linear ticket and its comments, the workspace README, or anything the ticket links to, if the session hasn't. If a plan in this project already covers the ticket, extend that plan rather than starting a second one.
@@ -59,18 +59,18 @@ No input needed at this step.
 
 Read the code the ticket will change, if the session hasn't. Then investigate each reading and open question from Phase 1 wherever its answer is: the code, the data, a log, a past ticket.
 
-- **A question the code answers doesn't go to Jonathan.** A question only he can answer does.
+- **A question the code answers doesn't go to the user.** A question only they can answer does.
 - **Every claim the plan will rely on ends up decided, verified, or labelled as a guess**, by the plans standard's test.
 - **Check that a plan is the right document.** Steps with no order that matters belong in the ticket. An approach still being argued needs an exploration first.
 
-> ⏸️ **GATE → Jonathan.** Claude plays back only what is new since the conversation:
+> ⏸️ **GATE → User.** Claude plays back only what is new since the conversation:
 >
 > - **What was read and found**, as bullets, each with the rule or fact that bears on the ticket. Anything that contradicts the conversation is flagged.
 > - **Open decisions**, as bullets, each with Claude's recommendation.
 > - **Claude's readings**, flagged as such.
 > - **Proposed phases**, a few words each.
 >
-> Jonathan answers the decisions, corrects any reading, and confirms the phase order.
+> The user answers the decisions, corrects any reading, and confirms the phase order.
 
 ---
 
@@ -82,7 +82,7 @@ Write the plan to the plans standard, at `projects/[project]/tickets/[eng-xxx]/p
 - **Test gates follow the testing standards** loaded in Phase 2.
 - **Add the plan to the workspace README**, and remove any question the gate answered from its Open Questions.
 
-> ⏸️ **GATE → Jonathan.** Review the plan. Nothing is built until he approves it.
+> ⏸️ **GATE → User.** Review the plan. Nothing is built until they approve it.
 
 ---
 
@@ -90,5 +90,5 @@ Write the plan to the plans standard, at `projects/[project]/tickets/[eng-xxx]/p
 
 - **Questions are asked together at the gate**, not one at a time across Phases 1 to 4.
 - **A standard that conflicts with the conversation** goes to the gate as a decision. The coding standards allow a deviation with a stated reason, and the plan records the reason.
-- **A standard Jonathan points to after Phase 5** means rereading the plan against it and saying what it changes.
+- **A standard the user points to after Phase 5** means rereading the plan against it and saying what it changes.
 - **The plan is not committed.** It sits in the ticket workspace, outside the repo.
