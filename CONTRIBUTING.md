@@ -102,7 +102,7 @@ A type that stops at step 1 is an example without a home, and a type that starts
 
 ## Review and Acceptance
 
-**A change here is accepted by Jonathan, not merged on its own.** These examples are what every future document is written against, so a wrong shape propagates further than a wrong document.
+**A change here is accepted by the maintainer, not merged on its own.** These examples are what every future document is written against, so a wrong shape propagates further than a wrong document.
 
 **A substantial rewrite runs [`procedures/sop_document-review.md`](procedures/sop_document-review.md).** It gates on purpose and on the reference example before drafting, and on acceptance before folding corrections back. Its Phase 4 is what folds an accepted correction back into the type it came from.
 
