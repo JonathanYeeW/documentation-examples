@@ -1,134 +1,147 @@
 # Core Product Flow — Order to Sandwich
 
 **Created:** 2026-03-01
-**Last Updated:** 2026-03-01
-**Context:** End-to-end flow from a hungry kid to a finished sandwich in their hands.
+**Last Updated:** 2026-10-20
+**Context:** From someone walking up to the machine to a sandwich in their hand.
 
 ## Summary
 
-This document covers the complete user journey through the PB&J Machine — from the moment someone approaches the machine to the moment they're holding a sandwich. The flow has three phases: the user tells the machine what they want, the machine builds it, and the sandwich is delivered. The entire interaction takes under two minutes. Understanding this flow is essential before working on any feature — every change we make touches some part of this path.
+The customer builds an order on the screen, the machine builds a sandwich from that order, and the sandwich comes back to the customer, usually in under two minutes. Once the customer taps **Make My Sandwich**, the machine never asks them anything again. Everything after that is read from the order and from the Spread Registry, the list of spreads the machine knows and how each one is handled. Quality isn't one inspection at the end. Three gates sit along the build, plus a mix check on spreads that need stirring, each at the earliest step that can see its problem, because a failure costs more with every step already taken. Read this before changing any part of the path, since every feature touches some step of it.
 
 ## Flow at a Glance
 
 ```
-PHASE 1: ORDER (user-driven, 15–20 seconds)
+PHASE 1: ORDER (the customer, 15–20 seconds)
 
-  1. User taps to start
-  2. Select bread + optional toasting
-  3. Select spread
-  4. Select jelly
-  5. Review selections → confirm
-  6. Order queued for assembly
+  1. Customer taps the welcome screen
+  2. Customer picks bread, and toasting if offered
+  3. Customer picks a spread
+  4. Customer picks a jelly
+  5. Customer checks the order → Make My Sandwich
+  6. Screen hands the order to the machine
 
-        ~~~~~~~~ handoff to machine ~~~~~~~~
+        ~~~~~~~~ handoff to the machine: the order ~~~~~~~~
 
-PHASE 2: ASSEMBLY (machine-driven, 60–90 seconds)
+PHASE 2: ASSEMBLY (the machine, 60–90 seconds)
 
-  7.  Ingredient prep — pull, check quality, stage
-  8.  Bread handling — slice, toast, cool-down
-  9.  Spread pre-handling — stir or temper per config
-  10. Assembly — spread, jelly, validate, combine, cut, plate
-  11. Quality photo → order complete
+  7.  Machine pulls the ingredients      — ingredient gate  ✗ order fails
+  8.  Machine readies the spread         — mixed?           ✗ order fails
+  9.  Machine slices, toasts, cools the bread
+  10. Machine spreads, checks, combines  — coverage gate    ✗ one touch-up,
+                                                              then order fails
+  11. Machine checks, photographs        — final gate       ✗ order fails
+      → order ready
 
-      → Quality gate failure at any step = order fails,
-        user notified, restart from Phase 1
+      → A failed order tells the customer why and offers a new one
 
-        ~~~~~~~~ handoff to user ~~~~~~~~
+        ~~~~~~~~ handoff to the customer: the sandwich ~~~~~~~~
 
 PHASE 3: DELIVERY (5 seconds)
 
-  12. User notified — chime plays
-  13. Sandwich dispensed — user takes it
-  14. Metrics logged, welcome screen returns
+  12. Machine tells the customer it's ready
+  13. Customer takes the sandwich, welcome screen returns
+  14. Machine logs the order
 ```
 
 ---
 
 ## Phase 1: Order
 
-User-driven. A guided wizard walks the user through their selections one choice per screen.
+The customer's phase. A guided wizard asks for one choice per screen, and nothing reaches the machine until step 6.
 
-**Step 1: Tap to start.** The machine sits idle on a welcome screen until someone touches it.
+**Step 1: The customer taps the welcome screen.** The machine waits on a welcome screen until someone touches it.
 
-- Tap anywhere to begin.
-- No login and no account — the machine serves whoever is standing in front of it.
+- Tapping anywhere starts an order.
+- There's no login and no account. The machine serves whoever is standing in front of it.
 
-**Step 2: Bread selection.** The first of three choices, each on its own screen.
+**Step 2: The customer picks bread.** The first of three choices, each shown as cards with a short description.
 
-- Available bread types show as selectable cards with short descriptions.
-- A toasting toggle appears below the selection when the machine supports it, defaulted to off.
+- A toasting toggle appears under the cards when the machine can toast.
+- The toggle starts off.
 
-**Step 3: Spread selection.** The same card pattern as bread, and the only place the Spread Registry surfaces to the user.
+**Step 3: The customer picks a spread.** The same cards as bread, and the only place the Spread Registry shows through to the customer.
 
-- Available spreads show as selectable cards.
-- Each card carries user-facing notes from the registry — "This spread is natural and will be stirred fresh" for almond butter.
-- **Why the notes exist** — they set expectations about prep time without exposing system internals.
+- Each card carries a note from the registry, such as "This spread is natural and will be stirred fresh" for almond butter.
+- **Why the notes exist** — they warn the customer about a longer wait without explaining how the machine works.
 
-**Step 4: Jelly selection.** The same card pattern as spread, with no prep notes — jelly has no handling that affects the user's wait.
+**Step 4: The customer picks a jelly.** The same cards with no notes, because no jelly changes how long the customer waits.
 
-**Step 5: Order confirmation.** The last moment before ingredients start moving.
+**Step 5: The customer checks the order.** The last moment before any ingredient moves.
 
-- One screen shows every selection, with a "Make My Sandwich" button.
-- Tapping any selection goes back to change it.
+- One screen shows every choice, with **Make My Sandwich**.
+- Tapping a choice goes back to its screen to change it.
 
-**Step 6: Order queued.** The handoff from user to machine.
+**Step 6: The screen hands the order to the machine.** The order says three things, such as "white bread, toasted; almond butter; grape jelly", and nothing about who placed it. From here the machine works from the order alone.
 
-- The screen transitions to a progress view showing which phase the machine is in.
-- The user waits here through Phase 2.
+- The screen switches to the **progress screen**, showing which phase the machine is in.
+- The customer waits there through Phase 2 and makes no further choices.
 
 ---
 
 ## Phase 2: Assembly
 
-Machine-driven. The user watches a progress screen and makes no further decisions.
+The machine's phase. Each gate is named by the question it answers, and what each one checks and costs is in `wiki_quality-model.md`.
 
-**Step 7: Ingredient preparation.** The order becomes physical items, and this is the cheapest place to stop.
+**Step 7: The machine pulls the ingredients.** The order becomes bread, spread and jelly staged at the prep station, and the ingredient gate asks "Do we have what we need, and is it good?"
 
-- The machine resolves the order into concrete items, pulls them from storage, and stages them at the prep station.
-- Quality checks run on every ingredient — stale bread, expired jelly, dried-out spread.
-- A failure here stops the order before assembly begins.
+- Every ingredient must be in stock and in date.
+- A failure here costs nothing, because no ingredient has been used yet. This is the cheapest place to stop.
 
-**Step 8: Bread handling.** Slice, toast, lay out.
+**Step 8: The machine readies the spread.** Decided by the Spread Registry, not by the order. The order says almond butter; the registry says almond butter separates in the jar and has to be stirred.
 
-- Sliced if needed, toasted if requested, laid out for assembly.
-- Toasted bread gets a mandatory 30-second cool-down before spread application.
-- **INC-042** — without the cool-down, spread melts into the bread grain and the sandwich falls apart on first bite.
+- Natural spreads are stirred, up to 3 times. One that still hasn't mixed fails the order.
+- Refrigerated spreads are warmed to room temperature, which the registry calls tempering. Warming that runs past its limit, set in `cpf_assembly-pipeline.md`, carries on with a warning rather than failing the order.
+- Standard peanut butter skips this step.
+- The spread is readied before the bread is touched, so a spread that won't mix fails the order with no bread used.
 
-**Step 9: Spread pre-handling.** Conditional, driven by the Spread Registry rather than by the order.
+**Step 9: The machine slices, toasts and cools the bread.** Done to the order: sliced if needed, toasted if the customer asked, laid out for assembly.
 
-- Natural spreads get stirred, up to 3 cycles.
-- Refrigerated spreads get tempered to room temperature.
-- Standard peanut butter skips this step entirely.
-- A failure after max retries fails the order with a user-friendly message, and the user picks a different spread.
+- Toasted bread cools for 30 seconds before any spread goes on.
+- **INC-042** — without the cool-down, spread melts into the bread and the sandwich falls apart on the first bite.
 
-**Step 10: Assembly.** The fixed sequence every order runs through.
+**Step 10: The machine assembles the sandwich.** The same fixed sequence for every order, with the coverage gate asking "Did the spread and jelly go on properly?" before the slices close.
 
-- Spread on Slice A, jelly on Slice B.
-- Coverage validation catches bare spots larger than 1cm².
-- A failed check triggers one touch-up pass, then fails the order if coverage still is not clean.
-- Combine, cut — diagonal by default — and plate.
+- Spread goes on one slice, jelly on the other.
+- A bare spot larger than 1cm² gets one touch-up. A slice still not covered fails the order.
+- The slices are combined, cut diagonally by default, and plated.
+- This is the last point a bad spread can be fixed. Once the slices are together, a bare spot stays.
 
-**Step 11: Quality check and completion.** A photo of the finished sandwich is taken for the order record, and the order is marked complete.
+**Step 11: The machine checks and photographs the sandwich.** The final gate asks "Is this what the customer ordered?", then the photo goes on the order record and the order is ready.
+
+- A failure here costs everything, and means an earlier gate is missing a check.
 
 ---
 
 ## Phase 3: Delivery
 
-The handoff back to the user.
+The handoff back to the customer. The sandwich crosses; the order stays with the machine as a record.
 
-**Step 12: User notified.** The machine signals that it is done.
+**Step 12: The machine tells the customer it's ready.** The progress screen and, when it can, a sound.
 
-- The progress screen updates to show the sandwich is ready.
-- A chime plays when the machine has audio.
+- The progress screen changes to say the sandwich is ready.
+- A chime plays if audio is on.
 
-**Step 13: Sandwich dispensed.** The end of the path.
+**Step 13: The customer takes the sandwich.** The end of the path for the customer.
 
-- The sandwich slides into the pickup area and the user takes it.
-- The welcome screen returns after 30 seconds of inactivity.
+- The sandwich slides into the pickup area.
+- The welcome screen comes back after 30 seconds with no one touching it.
 
-**Step 14: Metrics logged.** What the system keeps, and what it deliberately does not.
+**Step 14: The machine logs the order.** What it keeps, and what it leaves out on purpose.
 
-- Recorded: time to serve, selections, quality check triggers, prep failures.
+- Kept: time to serve, the choices, which checks fired, and any problems fixed during the build.
 - The data feeds operational dashboards.
 
-The machine and the sandwich are tracked, not the person.
+Nothing about the person is kept. The machine and the sandwich are tracked, not who ordered.
+
+---
+
+## When an Order Fails
+
+Every failure ends the order. The customer sees the specific reason, not a generic error, and is offered a new order, and the reason is logged with the step it happened at. What differs is where it stops and what has been used up by then.
+
+| Fails at | The question it failed | What's used up |
+|---|---|---|
+| Step 7 | Do we have what we need, and is it good? | Nothing |
+| Step 8 | Has the spread mixed? | Nothing but the stirring time |
+| Step 10 | Did the spread and jelly go on properly? | The bread and the spread |
+| Step 11 | Is this what the customer ordered? | Everything |

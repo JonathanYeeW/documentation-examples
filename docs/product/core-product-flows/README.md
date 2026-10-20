@@ -20,15 +20,23 @@ Altitude is not prescribed. It is set entirely by where the start and end points
 
 1. **Title** — `Core Product Flow — <start> to <end>`
 2. **Title block** — `Created`, `Updated`, and a `Context` line stating the start and end points
-3. **Summary** — what the flow covers, its phases, and when a reader needs it
+3. **Summary** — the shape of the flow in one sentence, what a reader is likely to get wrong about it, and when they need it
 4. **Flow at a Glance** — the whole path in one fenced block
 5. **Phases** — one section each, with numbered steps
 6. **A closing section** — error handling, or a symptom table, or whatever the flow's failures need
 
+### What travels
+
+A flow is easiest to follow when the reader can name the thing being passed along. An order, a request, a token: whatever crosses from one actor to the next.
+
+- **Name it once and keep the name.** The step that creates it says what it is called, and every later step uses that word.
+- **Show what it says, once, where it is created.** Its contents as the claims it makes, with real-looking values — "white bread, toasted; almond butter; grape jelly" — not a schema.
+- **Say what it leaves out** when a reader would assume it carries more, such as "nothing about who placed it".
+
 ### The glance block
 
 - **Every step appears, numbered continuously across phases.** A reader should be able to hold the whole path from this block alone.
-- **Phases are separated by an explicit handoff line**, naming what is taking over.
+- **Phases are separated by an explicit handoff line**, naming what is taking over and what crosses — `handoff to the machine: the order`.
 - **Annotate the block with what a failure does** at the points where a failure leaves the path.
 - **It is a diagram, not an index.** Steps carry a few words, not sentences.
 
@@ -39,7 +47,12 @@ Altitude is not prescribed. It is set entirely by where the start and end points
 - **A different kind of item inside the list gets a bolded label.** A scar (`**INC-042**`), a caveat, an optimization note. The label says this line is not another fact of the same sort, and it costs nothing — no sub-heading, no separate block.
 - **No sub-headings inside a step.** If something seems to need one, it is a step.
 - **A lone argument stays prose, under the list.** Reasoning bulleted on its own reads as a task. Facts are bullets; the argument about them is a sentence underneath.
+- **The step title names who acts.** "The machine readies the spread", not "Spread pre-handling". When actors trade off step by step, the title is where the reader sees the trade.
 - **Say what is decided at each step, not just what occurs.** A step that only narrates is a step a reader already inferred from the block.
+- **Write a check as the question it answers.** "Has the spread mixed?" says what is being decided; "mix validation" does not. When another document owns the check, use its name and its question, and point to it.
+- **Say what gets through without the check**, whether or not an incident is behind it. A check whose purpose isn't written down is easy to remove by mistake.
+- **State what the flow never does** wherever a reader would assume it does. "No login and no account" corrects a model the reader brought with them.
+- **Describe a term before naming it.** "The Spread Registry, the list of spreads the machine knows" gives the reader the thing and its name at once. No glossary.
 - **Name the failure the step is guarding against**, and what it costs when it fires. A quality gate's position in the sequence is a claim about what is cheap to waste.
 - **Reference a real incident where one shaped the design.** A rule with a scar attached does not get optimized away by the next person. Reference it — `INC-042` — rather than narrating when it happened and what was learned.
 - **Say where a fact lives rather than restating it.** A value repeated from the standard that owns it is a value with two places to go stale.
@@ -54,10 +67,11 @@ Top-level sections are `##` with no emoji, unlike the rest of this collection. A
 
 - **An error-handling section** when failures fall into classes with different costs.
 - **A symptom table** when the reader's real question is diagnostic — a row per symptom, the step it died at, and what that means. This is the strongest ending for a flow whose failures are observed from outside.
+- **A failure table** when the checks are the point — a row per check, keyed by the question it failed and what has been used up by then. The cost column is what makes the order of the checks readable.
 
 ## Examples
 
 | File | What It Covers |
 |---|---|
-| `cpf_sandwich-assembly.md` | Product altitude — a user approaching a machine to a sandwich in their hand, three phases across two actors, ending in metrics. Shows two steps written as a bare sentence because they carry one fact each |
+| `cpf_sandwich-assembly.md` | Product altitude — a customer approaching a machine to a sandwich in their hand, three phases across two actors. Shows the order as the thing that travels, step titles that name who acts, checks written as questions, and a failure table ending. Step 4 is a bare sentence because it carries one fact |
 | `cpf_assembly-pipeline.md` | Pipeline altitude — one function call to its return, conditional branches driven by configuration, ending in an error-handling table that classifies failures by what they waste |

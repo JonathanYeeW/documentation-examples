@@ -40,7 +40,7 @@ PHASE 3: ASSEMBLY (fixed sequence)
 
 PHASE 4: QUALITY & RETURN
 
-  10. Quality photo for order record
+  10. Final gate — matches the order? Quality photo for order record
   11. Return plated sandwich
 
       → Quality gate failure at any assembly step =
@@ -57,9 +57,9 @@ Registry-driven. The function resolves the user's spread selection into a concre
 
 - `getSpreadConfig(spreadType)` is called with the spread key from the order, such as `almond_butter`.
 - It returns the full `SpreadConfig` — label, viscosity, and the boolean flags that drive pre-handling.
-- Everything downstream reads the resolved config, never the raw spread key.
+- From here this is **the config**, and everything downstream reads it, never the raw spread key.
 
-**Step 2: Validate spread.** The guard against a key the registry does not hold.
+**Step 2: Validate spread.** Asks "Is this a spread the registry knows?" Without it, an unknown key would reach pre-handling with no config to drive it.
 
 - An unknown key throws `UnknownSpreadError`, with the list of valid spread types in the error.
 - The order fails immediately and no ingredients are pulled.
@@ -77,7 +77,7 @@ Conditional. The spread config's boolean flags decide which steps run — standa
 - Separated oil triggers another cycle, to a maximum of three.
 - A spread that will not mix after three rounds fails the order with `SpreadNotMixedError`, which names a replacement container so operations can act on it.
 
-**Step 4: Temper, if required.** For refrigerated spreads.
+**Step 4: Temper, if required.** For refrigerated spreads, and asks "Warm enough to apply?"
 
 - The container is removed from cold storage and rests at room temperature, with the temperature checked every 60 seconds.
 - Within 5°F of the 65°F target counts as ready. Exact temperature does not matter — close enough means soft enough to apply without tearing bread.
@@ -88,7 +88,7 @@ Conditional. The spread config's boolean flags decide which steps run — standa
 
 ## Phase 3: Assembly
 
-Fixed sequence. Every order runs the same steps in the same order; the spread config influences spreader pressure at step 6 but never the sequence itself. Quality gates fire at the earliest possible point, because a failure at step 5 wastes bread while a failure at step 8 wastes everything.
+Fixed sequence. Every order runs the same steps in the same order; the spread config influences spreader pressure at step 6 but never the sequence itself. Quality gates fire at the earliest possible point, because a failure at step 5 wastes bread while a failure at step 8 wastes the bread and the spread.
 
 **Step 5: Prepare bread.** Slice, toast, cool.
 
@@ -105,14 +105,14 @@ Fixed sequence. Every order runs the same steps in the same order; the spread co
 
 **Step 7: Apply jelly.** Jelly goes on Slice B, with no conditional logic and no pre-handling — it has none of the viscosity variance or temperature sensitivity that spreads do.
 
-**Step 8: Coverage validation.** The last quality gate before the sandwich becomes irreversible.
+**Step 8: Coverage validation.** The coverage gate asks "Did the spread and jelly go on properly?", the last chance before the sandwich becomes irreversible.
 
 - Both slices are scanned for bare spots larger than 1cm², catching uneven spread, pooled jelly, and spots where bread texture prevented adhesion.
 - A failed check triggers one touch-up pass on the offending slice.
 - Coverage still unclean after the touch-up fails the order.
 - Once the slices are combined there is no fixing a coverage problem, which is why this gate sits here.
 
-**Step 9: Combine, cut, plate.** Slices are pressed together, cut diagonally by default, and placed on a plate. No conditional logic and no quality gates — if the pipeline got here, the sandwich is good.
+**Step 9: Combine, cut, plate.** Slices are pressed together, cut diagonally by default, and placed on a plate. No conditional logic and no quality gates.
 
 ---
 
@@ -120,25 +120,27 @@ Fixed sequence. Every order runs the same steps in the same order; the spread co
 
 The final check and the handoff back to the caller.
 
-**Step 10: Quality photo.** A photo of the plated sandwich is taken for the order record.
+**Step 10: Final gate and quality photo.** The final gate asks "Is this what the customer ordered?", then a photo of the plated sandwich is taken for the order record.
 
-- It serves the operations dashboard, not the user — evidence that the sandwich met quality standards at the moment of completion.
+- A final-gate failure fails the order and costs everything. It means an earlier gate is missing a check, as `wiki_quality-model.md` describes.
+- The photo serves the operations dashboard, not the user — evidence that the sandwich met quality standards at the moment of completion.
 - Stored with the order metadata.
 
 **Step 11: Return.** The function returns the plated sandwich.
 
 - The output shape is the same regardless of which spread was selected or which pre-handling ran. Callers do not need to know what happened inside.
-- An error thrown anywhere in Phases 2–3 propagates with enough context to notify the user and suggest a retry or a different selection.
+- An error thrown anywhere in Phases 2–4 propagates with enough context to notify the user and suggest a retry or a different selection.
 
 ---
 
 ## Error Handling
 
-Failures fall into two classes, and the class is decided by when the failure happens rather than by what went wrong.
+Failures fall into three classes, and the class is decided by when the failure happens rather than by what went wrong.
 
 | Class | Phases | What it costs | What the user is told |
 |---|---|---|---|
 | Pre-assembly | 1–2 | Nothing. No ingredients consumed. | Select a different spread, or try again. |
-| Assembly | 3 | Bread, and potentially spread. | The order failed; retry or change the selection. |
+| Assembly | 3 | The bread, and the spread from step 6 on. | The order failed; retry or change the selection. |
+| Final | 4 | Everything. | The order failed; retry or change the selection. |
 
 The pipeline never serves a partial or substandard sandwich. Every failure mode prefers wasting ingredients over delivering a bad experience.
